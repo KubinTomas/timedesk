@@ -1,0 +1,214 @@
+﻿@using System.Globalization
+@using Microsoft.AspNet.Identity
+@using TImeDesk.Models.Database
+@model TImeDesk.ViewModel.TimeEntryViewModel
+@{
+    //First default inicialization
+    var actDate = new DateTime();
+
+    foreach (var t in Model.TimeEntries)
+    {
+
+
+
+        //New Date, Make new Day list container
+        if (actDate.Date.ToString("dd/mm/yyyy") != (t.StartedDate.Date.ToString("dd/mm/yyyy")))
+        {
+                actDate = t.StartedDate;
+
+            <text>
+                <div class="TimeEntry__List">
+                    <div class="TimeEntry__DayListContainer">
+                        <span class="TimeEntry__ListDate">@((t.StartedDate.Date == DateTime.Today.Date) ? "Today" : (t.StartedDate.Date == DateTime.Today.AddDays(-1).Date) ? "Yesterday" : t.StartedDate.Date.ToString("ddd, d MMMM", CultureInfo.InvariantCulture))</span>
+                        <div class="TimeEntry__ProjectNumberContainer TimeForm__PointerCursor" id="TimeEntry__ProjectNumber"><div class="TimeEntry__NumberHolder" id ="">@Model.TimeEntries.Count(x => x.StartedDate.Date.ToString("dd/mm/yyyy") == actDate.Date.ToString("dd/mm/yyyy"))</div></div>
+                        <span class="TimeEntry__CountTime" align="right">@TimeSpan.FromSeconds(Model.TimeEntries.Where(x => x.StartedDate.Date.ToString("dd/mm/yyyy") == actDate.Date.ToString("dd/mm/yyyy")).Sum(x => x.SpendedTime)).ToString(@"hh\:mm\:ss")</span>
+                    </div>
+                    @foreach (var x in Model.TimeEntries)
+                    {
+                        var entrySelectedTags = Model.AllSelectedTags.Where(c => c.TimeEntryId == x.Id);
+            
+                
+
+
+                                    if (x.StartedDate.Date.ToString("dd/mm/yyyy") == t.StartedDate.Date.ToString("dd/mm/yyyy"))
+                                    {
+                            <text>
+                                <div class="TimeEntry__Item TimeEntry__ItemWrapper" data-id="@x.Id">
+                                    <!-- Description -->
+                                    <div class="TimeEntry__InputDesContainer">
+                                        <span><input type="text" class="TimeEntry__InputDescription" placeholder="Add description.. " value="@x.Description"  onchange="descriptionUpdate(this)"/></span>
+                                    </div>
+                                    <!-- Project -->
+                                    <div class="TimeEntry__ProjectContainer CustomDropDown ProjectHolder">
+
+                                        <div class="Project__CustomDropDown">
+                                            <span>
+                                                @(x.ProjectId != null ? @Html.Raw("<span class='Project__SelectedProject placeToReplace' id ='projectDropDownIcon' ><i id='Timer__selectProject' > <div class='Project__ColorHolder' style='background-color:" + @x.Project.ColorString + "; '></div><span class='Project__Name Project' data-id='" + @x.Project.Id + " ' style='color:" + @x.Project.ColorString + "; '>" + @x.Project.Name + "</span>  </i></span> ") : Html.Raw("<span class = 'placeToReplace' id='projectDropDownIcon'  > <span> <i  class='fa fa-folder-open' id ='Timer__selectProject'  ></span></i></span> "))
+                                            </span>
+                                            <div id="Project__DropDown" class="Project__DropDownContent">
+                                                <div class="Project__filterContainer">
+                                                    <input type="text" placeholder="Find project.." id="PrFilterInput" class="FilterInput" onkeyup="filterProjectFunction()">
+                                                </div>
+                                                <div class="Project__projectsContainer" id="Projects">
+         
+                                                    <div class="Project__ItemWrapper"><a class="Project__itemContainer"><div class="Project__NoColor" style="background-color:transparent;"></div><span class="Project__Name Project" data-id="0">No Project</span></a></div>
+
+
+
+                                                    @foreach (var project in Model.Projects.Where(c => c.StatusId == Status.Active))
+    {
+                                                      <div class="Project__ItemWrapper"><a class="Project__itemContainer  @((x.ProjectId == project.Id)?  "SelectedItemInDropDown" : "")"><div class="Project__ColorHolder" style="background-color: @project.ColorString;"></div><span class="Project__Name Project" data-id="@project.Id" style="color: @project.ColorString">@project.Name</span></a></div>
+}
+
+
+                                                </div>
+                                                <div class="Project__createProjectContainer">
+                                                    <span><i style="color: #56cb0f;" class="fa fa-plus"></i><span id="Project__NewProjectBtn">Create new project</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <!-- Task -->
+                                    <div class="TimeEntry__ProjectContainer CustomDropDown TaskMainContainer TaskHolder">
+
+                                        <div class="Project__CustomDropDown">
+                                            <span>
+
+                                                @(x.ProjectTaskId != null ? @Html.Raw("<span class='Task__SelectedTask placeToReplace' id ='taskDropDownIcon' ><i id='Timer__selectTask' > <div class='Project__ColorHolder' style='background-color:" + @Model.AllProjectTasks.FirstOrDefault(c => c.Id == x.ProjectTaskId).ColorString+ "; '></div><span class='Project__Name Task' data-id='" + @x.ProjectTaskId + " ' style=' color:" + @Model.AllProjectTasks.FirstOrDefault(c => c.Id == x.ProjectTaskId).ColorString + "; ' >" + @Model.AllProjectTasks.FirstOrDefault(c => c.Id == x.ProjectTaskId).Name + "</span>  </i></span> ") : Html.Raw("<span class = 'placeToReplace' id='projectDropDownIcon' > <span> <i class='fa fa-tasks' id ='Timer__selectProject'  ></span></i></span> "))
+
+                                            </span>
+                                            <div id="Task__DropDown" class="Project__DropDownContent">
+                                                <div class="Project__filterContainer">
+                                                    <input type="text" placeholder="Find task.." id="TsFilterInput" class="FilterInput" onkeyup="filterProjectFunction()">
+                                                </div>
+                                                <div class="Project__projectsContainer TasksContainer" id="Tasks">
+
+                                                    <div class="Project__ItemWrapper"><a class="Project__itemContainer"><div class="Project__ColorHolder" style="background-color:transparent;"></div><span class="Project__Name Task" data-id="0">No Task</span></a></div>
+
+
+                                                    @foreach (var task in Model.AllProjectTasks.Where(c => c.ProjectId == x.ProjectId && c.StatusId == Status.Active))
+                                                    {
+                                                        <div class="Project__ItemWrapper"><a class="Project__itemContainer  @((x.ProjectTaskId == task.Id)?  "SelectedItemInDropDown" : "")"><div class="Project__ColorHolder" style="background-color: @task.ColorString"></div><span class="Project__Name Task" data-id="@task.Id" style="color: @task.ColorString;">@task.Name</span></a></div>
+                                                    }
+
+                                                </div>
+                                                <div class="Project__createProjectContainer">
+                                                    <span><i style="color: #56cb0f;" class="fa fa-plus"></i><span id="Project__NewProjectBtn">Create new task</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <!-- Billings -->
+                                    <div id="Billings__OpenDropDown" class="CustomDropDown BillingsHolder">
+
+                                        <div class="Project__CustomDropDown">
+                                            <span>
+
+                                             
+                                                @(x.BillingsId != null ? @Html.Raw("<span class='Task__SelectedTask placeToReplace' id ='taskDropDownIcon' ><i id='Timer__selectBilling' > <div class='Project__NoColor'></div><span class='Project__Name Billing' data-id='" + x.BillingsId + " ' >" + @Model.AllBillingses.FirstOrDefault(c => c.Id == x.BillingsId).HourRate + " " + @Model.Currency.FirstOrDefault(c => c.Id == Model.AllBillingses.FirstOrDefault(b => b.Id == x.BillingsId).CurrencyId).Symbol + "</span>  </i></span> ") : Html.Raw(" <span class = 'placeToReplace'id ='taskDropDownIcon'><span><i class='fa fa-dollar' id='Timer__selectBilling'></i></span> </span>"))
+                                            </span>
+                                            <div id="Task__DropDown" class="Project__DropDownContent">
+                                                <div class="Project__filterContainer">
+                                                    <input type="text" placeholder="Find project.." id="TsFilterInput" class="FilterInput" onkeyup="filterProjectFunction()">
+                                                </div>
+                                                <div class="Project__projectsContainer BillingsContainer" id="Billings">
+
+
+                                                    <div class="Project__ItemWrapper"><a class="Project__itemContainer"><div class="Project__NoColor" style="background-color:transparent;"></div><span class="Project__Name Billing" data-id="0">No Billing</span></a></div>
+
+
+                                                    @foreach (var billing in Model.AssignedBillingses)
+                                                    {
+                                                        <div class="Project__ItemWrapper"><a class="Project__itemContainer  @((x.BillingsId == billing.Id)?  "SelectedItemInDropDown" : "")"><div class="Project__NoColor"></div><span class="Project__Name Billing" data-id="@billing.Id">@billing.HourRate  @Model.Currency.FirstOrDefault(c => c.Id == billing.CurrencyId).Symbol</span></a></div>
+                                                    }
+
+                                                </div>
+                                                <div class="Project__createProjectContainer">
+                                                    <span><i style="color: #56cb0f;" class="fa fa-plus"></i><span id="Project__NewProjectBtn">Create new billing</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    
+                                    <!-- Tags -->
+                                    <div class="TimerForm__flex-div TimeForm__PointerCursor CustomDropDown" style="flex-grow: 0.8" id="Tags__OpenDropDown">
+
+
+                                        <div id="Tags__OpenDropDown">
+
+                                            <div class="Project__CustomDropDown">
+                                                <span><i class="fa fa-tags" id="Timer__selectTags"></i></span>
+                                                <div id="Task__DropDown" class="Project__DropDownContent">
+                                                    <div class="Project__filterContainer">
+                                                        <input type="text" placeholder="Find tag.." id="TsFilterInput" class="FilterInput" onkeyup="filterProjectFunction()">
+                                                    </div>
+
+                                                    <div class="Project__projectsContainer TagContainer" id="Tags">
+
+                                                        <span class="SelectedTagHeader">Selected tags</span>
+
+                                                        <div class="SelectedTagsContainer" id="SelectedTagIdContainer">
+
+
+                                                            @foreach (var tag in entrySelectedTags)
+                    {
+                                                                <div class="ItemTag" data-id="@tag.Tag.Id">@tag.Tag.Name</div>
+                                                            }
+                                                        </div>
+
+                                                        <span class="SelectedTagHeader">Available tags</span>
+
+                                                        <div class="AvailableTagsContainer">
+                                                            @foreach (var tag in Model.AllTags.ToList().Where(c => c.WorkSpaceId == Model.WorkspaceId && !entrySelectedTags.Any(p => p.TagId == c.Id)).ToList())
+                                                            {
+                                                                <div class="ItemTag" data-id="@tag.Id">@tag.Name</div>
+                                                            }
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div class="Project__createProjectContainer">
+                                                        <span><i style="color: #56cb0f;" class="fa fa-plus"></i><span id="Project__NewProjectBtn">Create new tag</span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Repeat time entry -->
+                                    <div class="TimerForm__flex-div TimeForm__PointerCursor RepeatTimeEntry" style="flex-grow: 0.2">
+                                        <span><i class="fa fa-repeat" id="Timer__repeatEntry" ></i></span>
+                                    </div>
+
+                                    <!-- Time -->
+                                    <div class="TimeEntry__TimeHolder" id ="TimeEntry__TimeHolder" style=" color:black;">
+                                        @{TimeSpan time = TimeSpan.FromSeconds(x.SpendedTime);
+                                            <text> @time.ToString(@"hh\:mm\:ss") </text>
+                                        }
+                                    </div>
+
+                                    <!-- Settings -->
+
+                                    <div class="TimeEntry__FunctionContainer"><button data-customer-id="@x.Id" class="btn-link js-delete"><i class="fa fa-trash" style="color: #B6B6B6;" aria-hidden="true"></i></button> </div>
+                                </div>
+                            </text>
+                        }
+                    }
+                </div>
+            </text>
+        }
+
+    }
+}
+
+

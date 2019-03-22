@@ -1,0 +1,34 @@
+﻿@model TImeDesk.ViewModel.ProfilCurrencyViewModel
+@using Microsoft.AspNet.Identity
+@using TImeDesk.Models.Database
+
+<p>User ID: @Model.UserId</p>
+@{
+    if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = ""}))
+        {
+            @Html.AntiForgeryToken()
+
+            @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})*@
+
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+
+
+        }
+    }
+}
+
+<div style="margin: 0 auto; width: 300px; height: 500px; ">
+    
+    @using (Ajax.BeginForm("ChangeCurrency", "Profile", new AjaxOptions { HttpMethod = "POST" }))
+    {
+        <div class="form-group">
+      
+        @Html.DropDownListFor(p => p.CurrencyId, new SelectList(Model.Currencies, "Id", "Name", Model.CurrencyId), new {@class = " Project__BtnAdd btn-add.btn-add-input", @id= "currencyList", @style = "width: 100px;margin-top: 5px; height: 35px;" })
+        </div>
+        <button class="btn Project__CreateBtn" type="submit">Change Currency</button>
+    }
+
+
+</div>

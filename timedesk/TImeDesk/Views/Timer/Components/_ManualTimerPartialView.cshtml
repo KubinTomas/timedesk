@@ -1,0 +1,168 @@
+﻿<div class="TimerForm__flex-div" style="flex-grow: 0.8">
+    <div id="ManualAutomatTimerHolder" style="color: black; ">
+        <div style="width: 160px; position: relative;">
+            <input type='text' class="form-control" id='dateFrom' />
+        </div>
+
+    </div>
+</div>
+<div class="TimerForm__flex-div" style="flex-grow: 0.8">
+    <div id="ManualAutomatTimerHolder" style="color: black;">
+        <div style="width: 90px;  position: relative;">
+            <input type='text' class="form-control" id='dateTo' />
+        </div>
+
+    </div>
+</div>
+<div class="TimerForm__flex-div TimeForm__PointerCursor" style="flex-grow: 1;">
+
+    <span style="margin: auto;" onclick="SaveTimeEntry();"> <img id="Timer__OnOff" value="ManualTimer" src="@Url.Content("~/Images/Timer/done.png")" height="42" width="42"></span>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+
+
+    var maxDate = new Date();
+    maxDate.setHours(23, 59, 59);
+
+    var dateFrom = new Date();
+    var dateTo = new Date();
+    var toDateHolder = new Date();
+
+    dateFrom.setSeconds(0, 0);
+    dateTo.setSeconds(0, 0);
+
+
+    $(document).ready(function () {
+        $('#dateFrom').datetimepicker({
+            defaultDate: new Date(),
+            maxDate: maxDate
+
+
+
+        });
+        $('#dateTo').datetimepicker({
+            useCurrent: false, //Important! See issue #1075
+            defaultDate: new Date(),
+            format: 'LT',
+
+        });
+        $("#dateFrom").on("dp.change", function (e) {
+            $('#dateTo').data("DateTimePicker").minDate(e.date);
+
+
+
+            dateFrom = new Date(e.date);
+
+            toDateHolder = new Date(e.date);
+            toDateHolder.setHours(dateTo.getHours(), dateTo.getMinutes());
+
+            dateTo = toDateHolder;
+
+            $('#dateTo').data("DateTimePicker").date(toDateHolder);
+
+
+        });
+        $("#dateTo").on("dp.change", function (e) {
+
+
+            toDateHolder = new Date(e.date);
+
+            dateTo.setHours(toDateHolder.getHours(), toDateHolder.getMinutes());
+
+            $('#dateFrom').data("DateTimePicker").maxDate(maxDate);
+        });
+
+    });
+
+    //$(function () {
+    //    $('#dateFrom').datetimepicker({
+    //        defaultDate: new Date(),
+    //        maxDate: maxDate
+
+
+
+    //    });
+    //    $('#dateTo').datetimepicker({
+    //        useCurrent: false, //Important! See issue #1075
+    //        defaultDate: new Date(),
+    //        format: 'LT',
+
+    //    });
+    //    $("#dateFrom").on("dp.change", function (e) {
+    //        $('#dateTo').data("DateTimePicker").minDate(e.date);
+
+
+
+    //        dateFrom = new Date(e.date);
+
+    //        toDateHolder = new Date(e.date);
+    //        toDateHolder.setHours(dateTo.getHours(), dateTo.getMinutes());
+
+    //        dateTo = toDateHolder;
+
+    //        $('#dateTo').data("DateTimePicker").date(toDateHolder);
+
+
+    //    });
+    //    $("#dateTo").on("dp.change", function (e) {
+
+
+    //        toDateHolder = new Date(e.date);
+
+    //        dateTo.setHours(toDateHolder.getHours(), toDateHolder.getMinutes());
+
+    //        $('#dateFrom').data("DateTimePicker").maxDate(maxDate);
+    //    });
+
+
+    //});
+
+    function SaveTimeEntry() {
+        var data = getTimerDoneData();
+
+
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(data),
+            url: addTimeEntry,
+            contentType: 'application/json',
+            success: function () {
+
+                //$('#TimeEntryPartial').load(timerPartialViewUrl,
+                //    function () {
+
+                //        //Loading color to active timer mode
+                //        setManAutTimerColors();
+
+                //        var projectId = (typeof ($('#projectDropDownIcon .Project__Name').attr("data-id")) == 'undefined') ? "0" : $('#projectDropDownIcon .Project__Name').attr("data-id");
+                //        var elWhere = $("#Task");
+
+                //        //If is timer started and project selected fill tasks
+                //        fillTaskData(projectId, elWhere);
+                //    });
+
+                //Reload all TimeEntries when add a new time entry
+                if (data['saveTimeEntry'] === true) {
+                    $('#TimeEntriesPartial').load(timeEntriesPartialViewUrl);
+                }
+            }
+        });
+    }
+    function getTimerDoneData() {
+
+        var timerDescription = $('#TimeForm__timeEntryDescriptionId').val();
+        var projectId = $('#TimeEntryPartial').find(".placeToReplace").find(".Project").attr("data-id");
+        var taskId = $('#TimeEntryPartial').find(".placeToReplace").find(".Task").attr("data-id");
+        var billingId = $('#TimeEntryPartial').find(".placeToReplace").find(".Billing").attr("data-id");
+
+        var d = new Date();
+
+        // Data
+        var model = { 'SpendedTime': "", 'StartedDate': dateFrom, 'EndedDate': dateTo, 'Description': timerDescription, 'IsFinished': true, 'saveTimeEntry': true, 'ProjectId': projectId, 'ProjectTaskId': taskId, 'BillingsId': billingId };
+
+        return model;
+    }
+</script>

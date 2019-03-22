@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+
+    if (User.Identity.IsAuthenticated)
+    {
+        string CurrentName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"]);
+
+        switch (CurrentName)
+        {
+            case "Timer":
+                Layout = "~/Views/Shared/_SideBarDefault.cshtml";
+                break;
+            case "Account":
+                Layout = "~/Views/Shared/_Layout.cshtml";
+                break;
+            default:
+                Layout = "~/Views/Shared/_SideBarDefault.cshtml";
+                break;
+        }
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
+}

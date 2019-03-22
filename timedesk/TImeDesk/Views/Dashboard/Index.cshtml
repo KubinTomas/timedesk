@@ -1,0 +1,358 @@
+﻿
+<div class="Dashboard__Wrapper">
+    <div class="Dashboard__InnerWrapper">
+        <div class="Dashboard__FilterMenu">
+
+            <div class="Dashboard__Title">Dashboard</div>
+            <div class="Dashboard__DatePicker">
+                <div id="daterange" class="Picker">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                    <span></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="Dashboard__SummaryWrapper">
+            <!-- Total projects -->
+            <div>
+                <div class="Dashboard__ItemWrapper">
+                    <span class="Dashboard__Icon C1">
+
+                        <i class="fa fa-folder"></i>
+
+                    </span>
+                    <div class="Dashboard__TextToIcon">
+                        <ul>
+                            <li class="C1t"><strong  id="SummaryProjectCount"></strong></li>
+                            <li>Projects</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Total spent time -->
+            <div>
+                <div class="Dashboard__ItemWrapper">
+                    <span class="Dashboard__Icon C2">
+
+                        <i class="fa fa-clock-o"></i>
+
+                    </span>
+                    <div class="Dashboard__TextToIcon">
+                        <ul>
+                            <li class="C2t"><strong id="SummaryTimeCount"></strong></li>
+                            <li>Total time</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total earned money -->
+            <div>
+                <div class="Dashboard__ItemWrapper">
+                    <span class="Dashboard__Icon C3">
+
+                        <i class="fa fa-dollar"></i>
+
+                    </span>
+                    <div class="Dashboard__TextToIcon">
+                        <ul>
+                            <li class="C3t"><strong id="SummaryEarnedMoney"></strong></li>
+                            <li>Earnings</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Most tracket -->
+            <div>
+                <div class="Dashboard__ItemWrapper">
+                    <span class="Dashboard__Icon C4">
+
+                        <i class="fa fa-trophy"></i>
+
+                    </span>
+                    <div class="Dashboard__TextToIcon">
+                        <ul >
+                            <li class="C4t"><strong styles ="max-width: 100px; verflow: hidden;white-space: nowrap;text-overflow: ellipsis;"id="SummaryFavorite"></strong></li>
+                            <li>Favorite</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="Dashboard__MainChartWrapper" id="MainChartPlace">
+
+        </div>
+        <div class="Dashboard__SubChartWrapper">
+            <div id="PieChart" style="flex-grow: 3">
+
+            </div>
+
+            <div style="flex-grow: 1">
+                <div class="Dashboard__Projects">
+                    <div class="ProjectTitleWrapper">
+                        <span class="Title">Summary</span>
+                    </div>
+                    <div class="ProjectsWrapper">
+                        <div class="Content">
+                            <ul id="SummaryUl"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/moment.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/daterangepicker.js")"></script>
+
+
+<!-- Google charts -->
+@*<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>*@
+
+
+<script type="text/javascript">
+
+
+    var start = moment();
+    var end = moment();
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(loadMainGraph);
+    google.charts.setOnLoadCallback(loadPieChart);
+
+
+
+    function cb(start, end) {
+        $('#daterange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+
+    }
+
+    $('#daterange').daterangepicker({
+        "ranges": {
+            "Today": [moment(), moment()],
+            "Yesterday": [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            "Last 7 Days": [moment().subtract(6, 'days'), moment()],
+            "Last 30 Days": [moment().subtract(29, 'days'), moment()],
+            "This Month": [moment().startOf('month'), moment().endOf('month')],
+            "Last Month": [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        "alwaysShowCalendars": true,
+        "opens": "left",
+        "startDate": start,
+        "endDate": end
+    }, function (start, end, label) {
+        cb(start, end);
+        console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+
+        loadMainGraph(start, end);
+        loadPieChart(start, end);
+        setSummaryWrapper(start, end);
+    });
+
+
+
+
+    $(document).ready(function () {
+        cb(start, end);
+        setSummaryWrapper(start, end);
+    });
+
+    $(window).resize(function() {
+        loadMainGraph(start, end);
+        loadPieChart(start, end);
+    });
+    function setSummaryWrapper(start = moment(), end = moment()) {
+        //Settings summary
+
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetDashboardSummary", "Dashboard")',
+            data: { startDate: start.format('YYYY-MM-DD'), endDate: end.format('YYYY-MM-DD') },
+            dataType: 'json',
+            success: function (timeEntries) {
+
+
+                var Data = timeEntries.JSONList;
+
+               // var dif = new Date(today.getTime() - startedDate.getTime());
+                var time = convertTime(Data[0].TotalTime, ':');
+                var newTime = time;
+
+                $('#SummaryProjectCount').html(Data[0].ProjectCount);
+
+                $('#SummaryTimeCount').html(time);
+
+                $('#SummaryEarnedMoney').html(Data[0].TotalEarned +" "+ Data[0].Symbol);
+
+                $('#SummaryFavorite').html(Data[0].mostTracket);
+               // alert(Data[0].ProjectCount);
+
+            }
+        });
+
+    }
+
+ /**
+ * Return HH:MM:SS format from SECONDS, goes over 24h limit
+ */
+    var convertTime = function (input, separator) {
+        var pad = function (input) { return input < 10 ? "0" + input : input; };
+        return [
+            pad(Math.floor(input / 3600)),
+            pad(Math.floor(input % 3600 / 60)),
+            pad(Math.floor(input % 60)),
+        ].join(typeof separator !== 'undefined' ? separator : ':');
+    }
+
+    function pad(num) {
+        return ("0" + num).slice(-2);
+    }
+
+    function loadMainGraph(start = moment(), end = moment()) {
+        console.log("Loading Graph: "+ start.format('YYYY-MM-DD') + "  " + end.toDate());
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetTimeEntriesColumnChart", "Dashboard")',
+            data: { startDate: start.format('YYYY-MM-DD'), endDate: end.format('YYYY-MM-DD') },
+            dataType: 'json',
+            success: function (timeEntries) {
+
+
+                var Data = timeEntries.JSONList;
+                var dataChart = new google.visualization.DataTable();
+                var Colores = [];
+
+                dataChart.addColumn('string', 'StartedDate');
+                dataChart.addColumn('number', 'Time');
+                dataChart.addColumn({type: 'string', role: 'tooltip'});
+
+                var biggerHour = 0;
+
+
+                for (var i = 0; i < Data.length; i++) {
+                    dataChart.addRow([Data[i].StartedDate, Data[i].TotalTimeSpend/60/60,
+
+                        convertTime(Data[i].TotalTimeSpend, ":")
+
+                    ]);
+
+                    if (biggerHour < Math.ceil(Data[i].TotalTimeSpend / 60 / 60))
+                            biggerHour = Math.ceil(Data[i].TotalTimeSpend / 60 / 60);
+
+                }
+
+              //  dataChart = google.visualization.arrayToDataTable(newArr);
+
+                var chart = new google.visualization.ColumnChart(document.getElementById('MainChartPlace'));
+                var ticksArray = [{ v: 0, f: "0h" }];
+
+                if (biggerHour <= 1) {
+                         ticksArray = [{ v: 0, f: "0h" }, { v: 0.5, f: "30min" }, { v: 1, f: "1h" }];
+                } else {
+                    for (var x = 0; x <= biggerHour; x ++) {
+                        ticksArray.push({ v: x, f: x.toString()+ "h"});
+                    }
+                }
+
+                //var formatter = new google.visualization.DateFormat({pattern: 'HH:mm:ss'});
+                //formatter.format(dataChart, 1);
+
+                //Number poslat jako hodiny, podle Ticks se to zařadí, ticks do max number + 1 .. a přepsat zobrazení po najetí myši na správný čas
+                chart.draw(dataChart,
+                    {
+                        position: "top",
+                        fontsize: "14px",
+                        colors: ['#2F74D0'],
+                      //  isStacked: "true",
+
+                        vAxis: { ticks: ticksArray }, //, { v: 2, f: "2h" }, { v: 3, f: "3h" }, { v: 4, f: "4h" }, { v: 22, f: "22h" }
+                    });
+
+            }
+
+
+        });
+
+    }
+    function loadPieChart(start = moment(), end = moment()) {
+
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetTimeEntriesPieChart", "Dashboard")',
+            data: { startDate: start.format('YYYY-MM-DD'), endDate: end.format('YYYY-MM-DD') },
+            dataType: 'json',
+            success: function (timeEntries) {
+
+
+                var Data = timeEntries.JSONList;
+                var data = new google.visualization.DataTable();
+                var Colores = [];
+
+                data.addColumn('string', 'ProjectName');
+                data.addColumn('number', 'TotalTimeSpend');
+                data.addColumn({ type: 'string', role: 'tooltip', p: { html: true } });
+
+                //Loop through each list data
+                for (var i = 0; i < Data.length; i++) {
+
+                    data.addRow([Data[i].ProjectName, Data[i].TotalTimeSpend,
+                        createCustomHTMLContent(
+                            convertTime(Data[i].TotalTimeSpend, ":"),
+                            Data[i].ProjectName)
+                    ]
+                        );
+                    Colores.push(Data[i].Color);
+                }
+
+                //Fill sideBar Summary
+                loadSideBarSummary(Data, Colores);
+
+                var chart = new google.visualization.PieChart(document.getElementById('PieChart'));
+
+                chart.draw(data,
+                    {
+                        tooltip: { isHtml: true },
+                        fontsize: "14px",
+                        colors: Colores,
+                        pieHole: 0.4,
+                        legend: "left",
+                        sliceVisibilityThreshold: 0
+
+                    });
+            }
+
+
+        });
+    }
+    function loadSideBarSummary(Data, Colores) {
+        var ul = $('#SummaryUl');
+        ul.empty();
+
+        for (var i = 0; i < Data.length; i++) {
+            ul.append('<li><span class="Project__ColorHolder" style="background-color:' + Colores[i] + '; padding: 6px; "></span><strong> ' + Data[i].ProjectName + ' </strong> (' +
+
+                convertTime(Data[i].TotalTimeSpend, ":")
+
+                + ')</li>');
+        }
+    }
+
+    function createCustomHTMLContent(time, name) {
+        return '<div style="padding:5px 5px 5px 5px; font-size: 1.2em;"><span>' + name + "</span>  <span><b>" + time +" </b></span>  </div>"
+    }
+    function setPage() {
+        //Load data
+      //  var data
+    }
+
+
+
+</script>

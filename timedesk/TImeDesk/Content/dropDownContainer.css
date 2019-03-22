@@ -1,0 +1,229 @@
+﻿.Project__DropDownContent {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    width: 340px;
+    overflow: auto;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    left: calc(50% - 40px);
+    top: 35px;
+    right: auto;
+    margin-left: -170px;
+    border: 1px solid #CCCCCC;
+    border-radius: 10px;
+    max-height: 500px;
+}
+
+.Project__filterContainer {
+    width: 100%;
+    padding: 15px;
+    height: 80px;
+    background-color: white;
+    border-bottom: 1px solid #f3f3f3;
+    cursor: default;
+}
+
+.Project__projectsContainer a {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+.Project__createProjectContainer {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    margin: 0 auto;
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid #f3f3f3;
+    font-size: 16px;
+}
+
+#Project__NewProjectBtn {
+    padding-left: 5px;
+    color: gray;
+}
+
+.FilterInput {
+    background-image: url(../Images/Timer/search-icon-hi.png);
+    background-size: 20px 20px;
+    background-position: 10px 6px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: 1px solid #CCCCCC;
+    border-radius: 15px;
+    width: 100%;
+    height: 35px;
+}
+
+.Project__OpenedProject {
+    border-radius: 10px;
+    background: #f4f4f4;
+    background-clip: padding-box;
+    padding: 4px 6px;
+}
+
+.Project__SelectedProject {
+    border-radius: 6px;
+    background: #f4f4f4;
+    background-clip: padding-box;
+    padding: 8px 10px; /*Šířka boxu okolo*/
+}
+
+.Task__SelectedTask {
+    border-radius: 6px;
+    background: #f4f4f4;
+    background-clip: padding-box;
+    white-space: nowrap; /*Komentář: Aby nepřetekl project*/
+    padding: 8px 12px;
+    /*font-size: 10px !important;*/
+}
+
+
+
+
+
+/* New Drop Down */
+
+.Project__CustomDropDown {
+    position: relative;
+    display: inline-block;
+}
+
+#Project_Ul {
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block
+}
+
+.Project__itemContainer {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    height: 40px;
+    flex: 1;
+    line-height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 80%;
+}
+
+.Project__ItemWrapper {
+    font-size: 0.8em;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    padding: 0 8px 0 8px;
+}
+
+    .Project__ItemWrapper a:hover {
+        background-color: #f2f2f2 !important;
+    }
+
+.Project__ColorHolder {
+    display: inline-block;
+    background-color: orange;
+    width: 8px;
+    height: 8px;
+    border-radius: 99px;
+}
+
+.Project__NoColor {
+    display: inline-block;
+}
+
+.Project__Name {
+    /*overflow: hidden;*/
+    letter-spacing: 1px;
+    text-overflow: ellipsis;
+    margin-left: 5px;
+    font-size: 1em !important; /*calc(1em + 0.0vw + 0.0vmin) !important;*/
+}
+
+.SelectedItemInDropDown {
+    background-color: #e9f8e0 !important;
+}
+
+.TagContainer {
+    cursor: default;
+    background-color: white;
+}
+
+.SelectedTagHeader {
+    color: gray;
+    font-size: 0.8em;
+    cursor: default;
+}
+
+.TagBorderAround {
+    border-radius: 6px;
+    background: #f4f4f4;
+    background-clip: padding-box;
+    white-space: nowrap;
+    padding: 8px 12px;
+    /* font-size: 10px !important; */
+}
+
+.SelectedTagsContainer {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: inline-block;
+    min-height: 50px;
+    background-color: white;
+    border-top: 1px solid #f3f3f3;
+}
+
+    .SelectedTagsContainer .ItemTag {
+        position: relative;
+        display: inline-block;
+        margin: 5px 5px 1px 1px;
+        border-radius: 10px;
+        color: #56cb0f;
+        background: #f4f4f4;
+        background-clip: padding-box;
+        white-space: nowrap;
+        padding: 6px 8px;
+        font-size: 0.9em !important;
+        letter-spacing: 1px;
+        cursor: pointer;
+    }
+
+.AvailableTagsContainer {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    display: inline-block;
+    min-height: 50px;
+    background-color: white;
+    border-top: 1px solid #f3f3f3;
+}
+
+    .AvailableTagsContainer .ItemTag {
+        letter-spacing: 1px;
+        position: relative;
+        display: inline-block;
+        margin: 5px 5px 1px 1px;
+        border-radius: 10px;
+        color: #2B2B2B;
+        background: #f4f4f4;
+        background-clip: padding-box;
+        white-space: nowrap;
+        padding: 6px 8px;
+        font-size: 0.9em !important;
+        cursor: pointer;
+    }

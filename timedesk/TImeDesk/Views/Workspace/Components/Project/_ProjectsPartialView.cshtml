@@ -1,0 +1,58 @@
+﻿@using TImeDesk.ViewModel
+@model WorkspaceDetailViewModel
+
+<div class="Header">
+    <div class="Title">Projects</div>
+    <div class="CreateNewProject" style="float: right;" project-id="0"><a class="btn btn-success">Create new project</a></div>
+</div>
+<div class="Body">
+    <table class="table dataTable  table-hover " id="ProjectTable">
+        <thead class="">
+            <tr>
+                <th>Name</th>
+                <th>Total hours</th>
+                <th>Status</th>
+                <th>Created by</th>
+                <th>Client</th>
+                <th>Created</th>
+                <th>Deadline</th>
+                <th  style="width: 50px;">Detail</th>
+                <th style="width: 50px;">Edit</th>
+
+            </tr>
+        </thead>
+        <tbody id="ProjectBody">
+
+            @foreach (var project in Model.ProjectsTotalTime)
+            {
+                <tr>
+                    <td>@project.Project.Name <span class="Project__ColorHolder" style="background-color:@project.Project.ColorString;  "></span> </td>
+                    <td>@project.ProjectTime</td>
+                    <td>@project.Project.Status.Name</td>
+                    <td>@project.Project.ApplicationUser.UserName</td>
+                    <td>@((project.Project.Client != null) ? project.Project.Client.Name : ""  ) </td>
+                    <td>@project.Project.Created.ToShortDateString()</td>
+                    <td>@(project.Project.DeadLine.HasValue? project.Project.DeadLine.Value.ToShortDateString() : "No deadline")</td>
+                    <td><a data-customer-id="" class="btn-link projectDetail" style="margin-left: 35%;" data-id ="@project.Project.Id"><i class="fa fa-search-plus" style="color: #B6B6B6;" aria-hidden="true"></i></a></td>
+                    <td><a data-customer-id="" class="btn-link editProject" style="margin-left: 35%;" project-id ="@project.Project.Id"><i class="fa fa-edit" style="color: #B6B6B6;" aria-hidden="true"></i></a></td>
+                    
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        //Initialize data table
+        $('#ProjectTable').dataTable({
+       
+        });
+
+    });
+
+</script>

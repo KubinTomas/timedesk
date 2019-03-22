@@ -1,0 +1,55 @@
+﻿@model TImeDesk.ViewModel.AddUserToProject
+<div class="Header" data-id="@Model.Project.Id" id="ProjectIdHolder">
+    <div class="Title">@Model.Project.Name</div>
+</div>
+<div class="Body">
+    <div class="UserProjects">
+        <div class="CenterHeader">Assign users to project</div>
+        <div class="Divider"></div>
+        <div class="AllUsers">
+            <table class="table dataTable  table-hover " id="AllUsersTable">
+                <thead class="">
+                    <tr>
+                        <th>Name</th>
+                        <th>Nickname</th>
+                        <th>Role</th>
+                        <th style="width: 100px;">Add to project</th>
+
+                    </tr>
+                </thead>
+                <tbody id="ProjectBody">
+
+                    @foreach (var user in Model.Users)
+                    {
+
+                        <tr>
+                            <td>@user.ApplicationUser.UserName </td>
+                            <td>Nickname </td>
+                            <td>Role </td>
+                            <td><a data-customer-id="" class="btn-link" style="margin-left: 35%;"><i class="fa fa-plus" style="color: #B6B6B6;" aria-hidden="true"></i></a></td>
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+
+
+        //Initialize data table
+        $('#AllUsersTable').dataTable({
+
+
+        });
+    });
+
+</script>

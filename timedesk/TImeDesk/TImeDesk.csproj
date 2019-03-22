@@ -1,0 +1,1170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1844B136-AA7C-49BC-B306-0F271C0F0A57}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TImeDesk</RootNamespace>
+    <AssemblyName>TImeDesk</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44304</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core, Version=1.5.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <HintPath>..\packages\dotless.1.5.2\lib\dotless.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BillingController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\TagController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\TimerController.cs" />
+    <Compile Include="Controllers\ToDoListController.cs" />
+    <Compile Include="Controllers\WorkspaceController.cs" />
+    <Compile Include="Controllers\WorkspaceNavbarsController.cs" />
+    <Compile Include="Controllers\WorkspaceProjectController.cs" />
+    <Compile Include="Controllers\WorkspaceSettingsController.cs" />
+    <Compile Include="Controllers\WorkspaceStatisticController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710221206271_InitialCreate.cs" />
+    <Compile Include="Migrations\201710221206271_InitialCreate.Designer.cs">
+      <DependentUpon>201710221206271_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712061739246_CreateWorkSpaceTable.cs" />
+    <Compile Include="Migrations\201712061739246_CreateWorkSpaceTable.Designer.cs">
+      <DependentUpon>201712061739246_CreateWorkSpaceTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712061819531_CreateWorkSpaceTable1.cs" />
+    <Compile Include="Migrations\201712061819531_CreateWorkSpaceTable1.Designer.cs">
+      <DependentUpon>201712061819531_CreateWorkSpaceTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712061839146_AddToDoListRelation.cs" />
+    <Compile Include="Migrations\201712061839146_AddToDoListRelation.Designer.cs">
+      <DependentUpon>201712061839146_AddToDoListRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712061849228_AddingToDoListRelationAndClasses.cs" />
+    <Compile Include="Migrations\201712061849228_AddingToDoListRelationAndClasses.Designer.cs">
+      <DependentUpon>201712061849228_AddingToDoListRelationAndClasses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712061853532_AddingColorClassAndRelationToNotes.cs" />
+    <Compile Include="Migrations\201712061853532_AddingColorClassAndRelationToNotes.Designer.cs">
+      <DependentUpon>201712061853532_AddingColorClassAndRelationToNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712061908459_AddProjectStatusAndReferences.cs" />
+    <Compile Include="Migrations\201712061908459_AddProjectStatusAndReferences.Designer.cs">
+      <DependentUpon>201712061908459_AddProjectStatusAndReferences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712101100242_ClientAndProjectRelation.cs" />
+    <Compile Include="Migrations\201712101100242_ClientAndProjectRelation.Designer.cs">
+      <DependentUpon>201712101100242_ClientAndProjectRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712101103423_UpdateProject.cs" />
+    <Compile Include="Migrations\201712101103423_UpdateProject.Designer.cs">
+      <DependentUpon>201712101103423_UpdateProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712101124251_AddAnnotationToListId.cs" />
+    <Compile Include="Migrations\201712101124251_AddAnnotationToListId.Designer.cs">
+      <DependentUpon>201712101124251_AddAnnotationToListId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712101610317_AllowNullIdOnProject.cs" />
+    <Compile Include="Migrations\201712101610317_AllowNullIdOnProject.Designer.cs">
+      <DependentUpon>201712101610317_AllowNullIdOnProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712101903089_FillStatusData.cs" />
+    <Compile Include="Migrations\201712101903089_FillStatusData.Designer.cs">
+      <DependentUpon>201712101903089_FillStatusData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712181513352_CreateBillings.cs" />
+    <Compile Include="Migrations\201712181513352_CreateBillings.Designer.cs">
+      <DependentUpon>201712181513352_CreateBillings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712181520412_AddingTimeEntry.cs" />
+    <Compile Include="Migrations\201712181520412_AddingTimeEntry.Designer.cs">
+      <DependentUpon>201712181520412_AddingTimeEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712181529313_AddNullableBillingsInTimeEntries.cs" />
+    <Compile Include="Migrations\201712181529313_AddNullableBillingsInTimeEntries.Designer.cs">
+      <DependentUpon>201712181529313_AddNullableBillingsInTimeEntries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801021624176_addUserToProject.cs" />
+    <Compile Include="Migrations\201801021624176_addUserToProject.Designer.cs">
+      <DependentUpon>201801021624176_addUserToProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801061924356_AddingColorStringToProject.cs" />
+    <Compile Include="Migrations\201801061924356_AddingColorStringToProject.Designer.cs">
+      <DependentUpon>201801061924356_AddingColorStringToProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801090748189_AddingCurrencyToBillings.cs" />
+    <Compile Include="Migrations\201801090748189_AddingCurrencyToBillings.Designer.cs">
+      <DependentUpon>201801090748189_AddingCurrencyToBillings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801090753180_AddingSymbolToCurrency.cs" />
+    <Compile Include="Migrations\201801090753180_AddingSymbolToCurrency.Designer.cs">
+      <DependentUpon>201801090753180_AddingSymbolToCurrency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801162016257_CreateUserSettings.cs" />
+    <Compile Include="Migrations\201801162016257_CreateUserSettings.Designer.cs">
+      <DependentUpon>201801162016257_CreateUserSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801162018489_RelationShipSettingsUserCurrency.cs" />
+    <Compile Include="Migrations\201801162018489_RelationShipSettingsUserCurrency.Designer.cs">
+      <DependentUpon>201801162018489_RelationShipSettingsUserCurrency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801172030224_AddingStatusToBillings.cs" />
+    <Compile Include="Migrations\201801172030224_AddingStatusToBillings.Designer.cs">
+      <DependentUpon>201801172030224_AddingStatusToBillings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801181156248_AddingColorToTasks.cs" />
+    <Compile Include="Migrations\201801181156248_AddingColorToTasks.Designer.cs">
+      <DependentUpon>201801181156248_AddingColorToTasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801181216390_AddingWorkSpaceIdToTasks.cs" />
+    <Compile Include="Migrations\201801181216390_AddingWorkSpaceIdToTasks.Designer.cs">
+      <DependentUpon>201801181216390_AddingWorkSpaceIdToTasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801181337520_AddingStatusToClients.cs" />
+    <Compile Include="Migrations\201801181337520_AddingStatusToClients.Designer.cs">
+      <DependentUpon>201801181337520_AddingStatusToClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801181800237_ChangingHourRateToString.cs" />
+    <Compile Include="Migrations\201801181800237_ChangingHourRateToString.Designer.cs">
+      <DependentUpon>201801181800237_ChangingHourRateToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801181914363_FillCurrenciesTable.cs" />
+    <Compile Include="Migrations\201801181914363_FillCurrenciesTable.Designer.cs">
+      <DependentUpon>201801181914363_FillCurrenciesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803052057521_InitialCreate1.cs" />
+    <Compile Include="Migrations\201803052057521_InitialCreate1.Designer.cs">
+      <DependentUpon>201803052057521_InitialCreate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803052100097_ChangingAutomaticTimerValue.cs" />
+    <Compile Include="Migrations\201803052100097_ChangingAutomaticTimerValue.Designer.cs">
+      <DependentUpon>201803052100097_ChangingAutomaticTimerValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803052242211_AddingNoteTheme.cs" />
+    <Compile Include="Migrations\201803052242211_AddingNoteTheme.Designer.cs">
+      <DependentUpon>201803052242211_AddingNoteTheme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803052243342_FillingUpNoteTheme.cs" />
+    <Compile Include="Migrations\201803052243342_FillingUpNoteTheme.Designer.cs">
+      <DependentUpon>201803052243342_FillingUpNoteTheme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803052319432_RemoveColorRefFromNotes.cs" />
+    <Compile Include="Migrations\201803052319432_RemoveColorRefFromNotes.Designer.cs">
+      <DependentUpon>201803052319432_RemoveColorRefFromNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803071427369_AddingTwoColorsToNoteTheme.cs" />
+    <Compile Include="Migrations\201803071427369_AddingTwoColorsToNoteTheme.Designer.cs">
+      <DependentUpon>201803071427369_AddingTwoColorsToNoteTheme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803071451429_AddingBgThemeInNotes.cs" />
+    <Compile Include="Migrations\201803071451429_AddingBgThemeInNotes.Designer.cs">
+      <DependentUpon>201803071451429_AddingBgThemeInNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803072001592_CreateUserWorkspace.cs" />
+    <Compile Include="Migrations\201803072001592_CreateUserWorkspace.Designer.cs">
+      <DependentUpon>201803072001592_CreateUserWorkspace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803072003229_AddingStatusForUserWorkspace.cs" />
+    <Compile Include="Migrations\201803072003229_AddingStatusForUserWorkspace.Designer.cs">
+      <DependentUpon>201803072003229_AddingStatusForUserWorkspace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803072206438_AddingCurrentWorkspace.cs" />
+    <Compile Include="Migrations\201803072206438_AddingCurrentWorkspace.Designer.cs">
+      <DependentUpon>201803072206438_AddingCurrentWorkspace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803081342192_RemovingColorIdFromProject.cs" />
+    <Compile Include="Migrations\201803081342192_RemovingColorIdFromProject.Designer.cs">
+      <DependentUpon>201803081342192_RemovingColorIdFromProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803081636277_AddingRefTOUserInNotes.cs" />
+    <Compile Include="Migrations\201803081636277_AddingRefTOUserInNotes.Designer.cs">
+      <DependentUpon>201803081636277_AddingRefTOUserInNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803081637515_AddingStatusToNotes.cs" />
+    <Compile Include="Migrations\201803081637515_AddingStatusToNotes.Designer.cs">
+      <DependentUpon>201803081637515_AddingStatusToNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803111928338_AddingUserProjectWorkspaceConstrains.cs" />
+    <Compile Include="Migrations\201803111928338_AddingUserProjectWorkspaceConstrains.Designer.cs">
+      <DependentUpon>201803111928338_AddingUserProjectWorkspaceConstrains.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803121943207_NewDbSet.cs" />
+    <Compile Include="Migrations\201803121943207_NewDbSet.Designer.cs">
+      <DependentUpon>201803121943207_NewDbSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803131804267_AddCreateDateToProject.cs" />
+    <Compile Include="Migrations\201803131804267_AddCreateDateToProject.Designer.cs">
+      <DependentUpon>201803131804267_AddCreateDateToProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803261751237_AddingWorkspaceRoles.cs" />
+    <Compile Include="Migrations\201803261751237_AddingWorkspaceRoles.Designer.cs">
+      <DependentUpon>201803261751237_AddingWorkspaceRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803270714044_ChangingNameOfRole.cs" />
+    <Compile Include="Migrations\201803270714044_ChangingNameOfRole.Designer.cs">
+      <DependentUpon>201803270714044_ChangingNameOfRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803281841006_AddingTagAndTimeEntryTag.cs" />
+    <Compile Include="Migrations\201803281841006_AddingTagAndTimeEntryTag.Designer.cs">
+      <DependentUpon>201803281841006_AddingTagAndTimeEntryTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803311420095_ProjectExtension.cs" />
+    <Compile Include="Migrations\201803311420095_ProjectExtension.Designer.cs">
+      <DependentUpon>201803311420095_ProjectExtension.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804011953244_UserWorkspaceBillings.cs" />
+    <Compile Include="Migrations\201804011953244_UserWorkspaceBillings.Designer.cs">
+      <DependentUpon>201804011953244_UserWorkspaceBillings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804011959488_AddingStatusToWorkspaceBilling.cs" />
+    <Compile Include="Migrations\201804011959488_AddingStatusToWorkspaceBilling.Designer.cs">
+      <DependentUpon>201804011959488_AddingStatusToWorkspaceBilling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804051107398_AddingUserBilling.cs" />
+    <Compile Include="Migrations\201804051107398_AddingUserBilling.Designer.cs">
+      <DependentUpon>201804051107398_AddingUserBilling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804051116159_RemovingUnusedClass.cs" />
+    <Compile Include="Migrations\201804051116159_RemovingUnusedClass.Designer.cs">
+      <DependentUpon>201804051116159_RemovingUnusedClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804051119228_ChangingUserBillings.cs" />
+    <Compile Include="Migrations\201804051119228_ChangingUserBillings.Designer.cs">
+      <DependentUpon>201804051119228_ChangingUserBillings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804071625221_AddingMoreStatus.cs" />
+    <Compile Include="Migrations\201804071625221_AddingMoreStatus.Designer.cs">
+      <DependentUpon>201804071625221_AddingMoreStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804080931585_AddingCurrencyToWorkspace.cs" />
+    <Compile Include="Migrations\201804080931585_AddingCurrencyToWorkspace.Designer.cs">
+      <DependentUpon>201804080931585_AddingCurrencyToWorkspace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804081459160_AddingBillingsToProject.cs" />
+    <Compile Include="Migrations\201804081459160_AddingBillingsToProject.Designer.cs">
+      <DependentUpon>201804081459160_AddingBillingsToProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804081503456_AddingCurrencyToProject.cs" />
+    <Compile Include="Migrations\201804081503456_AddingCurrencyToProject.Designer.cs">
+      <DependentUpon>201804081503456_AddingCurrencyToProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Convertors\CurrencyConvertor.cs" />
+    <Compile Include="Models\Database\Billings.cs" />
+    <Compile Include="Models\Database\Client.cs" />
+    <Compile Include="Models\Database\Color.cs" />
+    <Compile Include="Models\Database\Currency.cs" />
+    <Compile Include="Models\Database\NoteColorTheme.cs" />
+    <Compile Include="Models\Database\Project.cs" />
+    <Compile Include="Models\Database\ProjectTask.cs" />
+    <Compile Include="Models\Database\Status.cs" />
+    <Compile Include="Models\Database\Tag.cs" />
+    <Compile Include="Models\Database\TimeEntry.cs" />
+    <Compile Include="Models\Database\TimeEntryTag.cs" />
+    <Compile Include="Models\Database\ToDoList.cs" />
+    <Compile Include="Models\Database\UserBilling.cs" />
+    <Compile Include="Models\Database\UserProject.cs" />
+    <Compile Include="Models\Database\UserSettings.cs" />
+    <Compile Include="Models\Database\UserWorkspace.cs" />
+    <Compile Include="Models\Database\UserWorkspaceBilling.cs" />
+    <Compile Include="Models\Database\UserWorkspaceRoles.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Database\WorkSpace.cs" />
+    <Compile Include="Models\Database\ToDoNotes.cs" />
+    <Compile Include="Models\Others\CustomTimeEntry.cs" />
+    <Compile Include="Models\Others\DashboardSummary.cs" />
+    <Compile Include="Models\Others\GlobalViewBagUserPermission.cs" />
+    <Compile Include="Models\Others\ProjectTotalTime.cs" />
+    <Compile Include="Models\Others\TaskTimeSpent.cs" />
+    <Compile Include="Models\Others\UserProjectSpentTime.cs" />
+    <Compile Include="Models\Singletons\WorkSpaceSingleton.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\BillingCurrencyViewModel.cs" />
+    <Compile Include="ViewModel\ClientViewModel.cs" />
+    <Compile Include="ViewModel\NotesViewModel.cs" />
+    <Compile Include="ViewModel\ProfilCurrencyViewModel.cs" />
+    <Compile Include="ViewModel\ProjectClientViewModel.cs" />
+    <Compile Include="ViewModel\ProjectWorkspaceDetailViewModel.cs" />
+    <Compile Include="ViewModel\TagViewModel.cs" />
+    <Compile Include="ViewModel\TaskProjectViewModel.cs" />
+    <Compile Include="ViewModel\TimeEntriesViewModel.cs" />
+    <Compile Include="ViewModel\TimeEntryViewModel.cs" />
+    <Compile Include="ViewModel\WorkspaceDetailViewModel.cs" />
+    <Compile Include="ViewModel\WorkspaceViewModel.cs" />
+    <Compile Include="ViewModel\Workspace\Permissions\WorkspaceUserPermissions.cs" />
+    <Compile Include="ViewModel\Workspace\Project\AddUserToProject.cs" />
+    <Compile Include="ViewModel\Workspace\Project\CreateWorkspaceProjectPartialView.cs" />
+    <Compile Include="ViewModel\Workspace\Project\ProjectTasksViewModel.cs" />
+    <Compile Include="ViewModel\Workspace\Settings\WorkspaceSettingsViewModel.cs" />
+    <Compile Include="ViewModel\Workspace\Statistic\WorkspaceStatisticViewModel.cs" />
+    <Compile Include="ViewModel\Workspace\User\UserDetailWorkspaceViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\bootstrap-datepicker\bootstrap-datepicker.css" />
+    <Content Include="Content\bootstrap-datepicker\bootstrap-datepicker3.css" />
+    <Content Include="Content\bootstrap-datepicker\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\createworkspace.css">
+      <DependentUpon>createworkspace.less</DependentUpon>
+    </Content>
+    <Content Include="Content\createworkspace.min.css">
+      <DependentUpon>createworkspace.css</DependentUpon>
+    </Content>
+    <Content Include="Content\customElements.css">
+      <DependentUpon>customElements.less</DependentUpon>
+    </Content>
+    <Content Include="Content\customElements.min.css">
+      <DependentUpon>customElements.css</DependentUpon>
+    </Content>
+    <Content Include="Content\dashboard.css">
+      <DependentUpon>dashboard.less</DependentUpon>
+    </Content>
+    <Content Include="Content\dashboard.min.css">
+      <DependentUpon>dashboard.css</DependentUpon>
+    </Content>
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.min.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.min.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.min.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\select.foundation.css" />
+    <Content Include="Content\DataTables\css\select.foundation.min.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.min.css" />
+    <Content Include="Content\DataTables\images\details_close.png" />
+    <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\sort_asc.png" />
+    <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\images\sort_both.png" />
+    <Content Include="Content\DataTables\images\sort_desc.png" />
+    <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\daterangepicker.css" />
+    <Content Include="Content\dropDownContainer.css" />
+    <Content Include="Content\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Content\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\homepage.css">
+      <DependentUpon>homepage.less</DependentUpon>
+    </Content>
+    <Content Include="Content\homepage.min.css">
+      <DependentUpon>homepage.css</DependentUpon>
+    </Content>
+    <Content Include="Content\icons.css" />
+    <Content Include="Content\project.css" />
+    <Content Include="Content\sidebar.css" />
+    <Content Include="Content\spectrum.css" />
+    <Content Include="Content\timeEntry.css" />
+    <Content Include="Content\timer.css" />
+    <Content Include="Content\todolist.css">
+      <DependentUpon>todolist.less</DependentUpon>
+    </Content>
+    <Content Include="Content\todolist.min.css">
+      <DependentUpon>todolist.css</DependentUpon>
+    </Content>
+    <Content Include="Content\workspace.css">
+      <DependentUpon>workspace.less</DependentUpon>
+    </Content>
+    <Content Include="Content\workspace.min.css">
+      <DependentUpon>workspace.css</DependentUpon>
+    </Content>
+    <Content Include="Content\workspaceDetail.css">
+      <DependentUpon>workspaceDetail.less</DependentUpon>
+    </Content>
+    <Content Include="Content\workspaceDetail.min.css">
+      <DependentUpon>workspaceDetail.css</DependentUpon>
+    </Content>
+    <Content Include="Content\workspaceProjectDetail.css">
+      <DependentUpon>workspaceProjectDetail.less</DependentUpon>
+    </Content>
+    <Content Include="Content\workspaceProjectDetail.min.css">
+      <DependentUpon>workspaceProjectDetail.css</DependentUpon>
+    </Content>
+    <Content Include="Content\workspaceSettings.css">
+      <DependentUpon>workspaceSettings.less</DependentUpon>
+    </Content>
+    <Content Include="Content\workspaceSettings.min.css">
+      <DependentUpon>workspaceSettings.css</DependentUpon>
+    </Content>
+    <Content Include="Content\workspaceStatistic.css">
+      <DependentUpon>workspaceStatistic.less</DependentUpon>
+    </Content>
+    <Content Include="Content\workspaceStatistic.min.css">
+      <DependentUpon>workspaceStatistic.css</DependentUpon>
+    </Content>
+    <Content Include="Content\workspaceUserProfil.css">
+      <DependentUpon>workspaceUserProfil.less</DependentUpon>
+    </Content>
+    <Content Include="Content\workspaceUserProfil.min.css">
+      <DependentUpon>workspaceUserProfil.css</DependentUpon>
+    </Content>
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\Homepage\bg1.jpg" />
+    <Content Include="Images\Homepage\bg2.jpg" />
+    <Content Include="Images\Homepage\bg3.jpg" />
+    <Content Include="Images\Homepage\bg4.jpg" />
+    <Content Include="Images\Homepage\bg5.jpg" />
+    <Content Include="Images\Homepage\MainBg.jpg" />
+    <Content Include="Images\Timer\done.png" />
+    <Content Include="Images\Timer\play.png" />
+    <Content Include="Images\Timer\search-icon-hi.png" />
+    <Content Include="Images\Timer\stop.png" />
+    <Content Include="Images\Timer\tick_done.png" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\homepage.less" />
+    <Content Include="DeveloperNotes\WorkSpaceNotes.docx" />
+    <Content Include="Content\dashboard.less" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Content\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Content\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Content\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Content\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Content\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Content\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Content\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Content\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Content\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Content\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Content\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Content\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Content\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Content\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Content\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Content\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Content\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Content\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Content\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Content\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Content\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Content\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Content\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Content\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Content\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Content\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Content\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\DataTables\css\mixins.scss" />
+    <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Content\customElements.less" />
+    <Content Include="Content\bootstrap-datepicker\bootstrap-datepicker.css.map" />
+    <Content Include="Content\todolist.less" />
+    <Content Include="Content\workspace.less" />
+    <Content Include="Content\createworkspace.less" />
+    <Content Include="Content\workspaceDetail.less" />
+    <Content Include="Content\workspaceUserProfil.less" />
+    <Content Include="Content\workspaceSettings.less" />
+    <Content Include="Content\workspaceProjectDetail.less" />
+    <Content Include="Content\workspaceStatistic.less" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.min.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.min.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.min.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.min.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.print.js" />
+    <Content Include="Scripts\DataTables\buttons.print.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.min.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
+    <Content Include="Scripts\daterangepicker.js" />
+    <Content Include="Scripts\External\projectDropDown.js" />
+    <Content Include="Scripts\External\taskDropDown.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.ba-throttle-debounce.js" />
+    <Content Include="Scripts\jquery.ba-throttle-debounce.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\spectrum.js" />
+    <Content Include="Scripts\TimeEntry\DeleteUpdateController.js" />
+    <Content Include="Scripts\Timer\LoadMoreTimeEntries.js" />
+    <Content Include="Scripts\Timer\SwitchingTimerAndManual.js" />
+    <Content Include="Scripts\Timer\DataController.js" />
+    <Content Include="Scripts\Timer\DropDownController.js" />
+    <Content Include="Scripts\ToDoList\CRUDNoteController.js" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
+    <Content Include="Scripts\WorkSpace\Controller.js" />
+    <Content Include="Scripts\WorkSpace\NavbarsControllers\ProjectNavController.js" />
+    <Content Include="Scripts\WorkSpace\WorkspaceSettings.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Account\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_SideBarDefault.cshtml" />
+    <Content Include="Views\Timer\Index.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Project\_AddProjectModalPartial.cshtml" />
+    <Content Include="Views\Project\_ProjectsPartialView.cshtml" />
+    <Content Include="Views\Timer\_TimeEntryPartialView.cshtml" />
+    <Content Include="Views\Timer\_TimeEntriesPartialView.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Scripts\underscore.min.map" />
+    <Content Include="Views\Task\Index.cshtml" />
+    <Content Include="Views\Task\_TasksPartialView.cshtml" />
+    <Content Include="Views\Task\_AddTaskModalPartial.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Client\_ClientsPartialView.cshtml" />
+    <Content Include="Views\Client\_AddClientModalPartial.cshtml" />
+    <Content Include="Views\Billing\Index.cshtml" />
+    <Content Include="Views\Billing\_AddBillingModalPartial.cshtml" />
+    <Content Include="Views\Billing\_BillingsPartialView.cshtml" />
+    <Content Include="Views\Timer\Components\_ManualAutomatPartialView.cshtml" />
+    <Content Include="Views\Timer\Components\_DeleteRunningEntryPartialView.cshtml" />
+    <Content Include="Views\Timer\Components\_AutomaticTimerPartialView.cshtml" />
+    <Content Include="Views\Timer\Components\_ManualTimerPartialView.cshtml" />
+    <Content Include="Views\ToDoList\Index.cshtml" />
+    <Content Include="Views\ToDoList\Components\_NotePartialView.cshtml" />
+    <Content Include="Views\Workspace\Index.cshtml" />
+    <Content Include="Views\Workspace\CreateWorkspaceView.cshtml" />
+    <Content Include="Views\Workspace\Components\_WorkspaceEntry.cshtml" />
+    <Content Include="Views\Workspace\WorkspaceDetail.cshtml" />
+    <Content Include="Views\Workspace\Components\_WorkspaceInvitation.cshtml" />
+    <Content Include="Views\ToDoList\WorkspaceIndex.cshtml" />
+    <Content Include="Views\Workspace\Components\Users\_UserSummaryPartialView.cshtml" />
+    <Content Include="Views\Workspace\Components\Users\_InviteUserPartialView.cshtml" />
+    <Content Include="Views\Workspace\Components\Project\_ProjectsPartialView.cshtml" />
+    <Content Include="Views\WorkspaceProject\_ProjectDetailPartialView.cshtml" />
+    <Content Include="Views\WorkspaceProject\_AddUserToProjectPartialView.cshtml" />
+    <Content Include="Views\WorkspaceNavbars\_wWorkspaceNavigationMenu.cshtml" />
+    <Content Include="Views\WorkspaceNavbars\_wProjectNavigationMenu.cshtml" />
+    <Content Include="Views\WorkspaceProject\_UsersProjectPartialView.cshtml" />
+    <Content Include="Views\WorkspaceProject\_UsersToAddOnProjectPartialView.cshtml" />
+    <Content Include="Views\Workspace\Components\Roles\_UserRolesPartialView.cshtml" />
+    <Content Include="Views\Tag\Index.cshtml" />
+    <Content Include="Views\Tag\_AddTagModalPartialView.cshtml" />
+    <Content Include="Views\Tag\_TagsPartialView.cshtml" />
+    <Content Include="Views\WorkspaceProject\_CreateProjectPartialView.cshtml" />
+    <Content Include="Views\Workspace\Components\Users\_UserDetailPartialView.cshtml" />
+    <Content Include="Views\WorkspaceSettings\_WorkspaceSettingsPartialView.cshtml" />
+    <Content Include="Views\WorkspaceProject\_ProjectDetailStatisticPartialView.cshtml" />
+    <Content Include="Views\WorkspaceStatistic\_WorkspaceStatisticPartialView.cshtml" />
+    <Content Include="Views\WorkspaceProject\_ProjectTasksPartialView.cshtml" />
+    <Content Include="Views\Workspace\EmptyViewToGetPureHtml.cshtml" />
+    <Content Include="Views\Help\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Scripts\Others\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710221206271_InitialCreate.resx">
+      <DependentUpon>201710221206271_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061739246_CreateWorkSpaceTable.resx">
+      <DependentUpon>201712061739246_CreateWorkSpaceTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061819531_CreateWorkSpaceTable1.resx">
+      <DependentUpon>201712061819531_CreateWorkSpaceTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061839146_AddToDoListRelation.resx">
+      <DependentUpon>201712061839146_AddToDoListRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061849228_AddingToDoListRelationAndClasses.resx">
+      <DependentUpon>201712061849228_AddingToDoListRelationAndClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061853532_AddingColorClassAndRelationToNotes.resx">
+      <DependentUpon>201712061853532_AddingColorClassAndRelationToNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061908459_AddProjectStatusAndReferences.resx">
+      <DependentUpon>201712061908459_AddProjectStatusAndReferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712101100242_ClientAndProjectRelation.resx">
+      <DependentUpon>201712101100242_ClientAndProjectRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712101103423_UpdateProject.resx">
+      <DependentUpon>201712101103423_UpdateProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712101124251_AddAnnotationToListId.resx">
+      <DependentUpon>201712101124251_AddAnnotationToListId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712101610317_AllowNullIdOnProject.resx">
+      <DependentUpon>201712101610317_AllowNullIdOnProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712101903089_FillStatusData.resx">
+      <DependentUpon>201712101903089_FillStatusData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181513352_CreateBillings.resx">
+      <DependentUpon>201712181513352_CreateBillings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181520412_AddingTimeEntry.resx">
+      <DependentUpon>201712181520412_AddingTimeEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181529313_AddNullableBillingsInTimeEntries.resx">
+      <DependentUpon>201712181529313_AddNullableBillingsInTimeEntries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801021624176_addUserToProject.resx">
+      <DependentUpon>201801021624176_addUserToProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801061924356_AddingColorStringToProject.resx">
+      <DependentUpon>201801061924356_AddingColorStringToProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801090748189_AddingCurrencyToBillings.resx">
+      <DependentUpon>201801090748189_AddingCurrencyToBillings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801090753180_AddingSymbolToCurrency.resx">
+      <DependentUpon>201801090753180_AddingSymbolToCurrency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801162016257_CreateUserSettings.resx">
+      <DependentUpon>201801162016257_CreateUserSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801162018489_RelationShipSettingsUserCurrency.resx">
+      <DependentUpon>201801162018489_RelationShipSettingsUserCurrency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801172030224_AddingStatusToBillings.resx">
+      <DependentUpon>201801172030224_AddingStatusToBillings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801181156248_AddingColorToTasks.resx">
+      <DependentUpon>201801181156248_AddingColorToTasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801181216390_AddingWorkSpaceIdToTasks.resx">
+      <DependentUpon>201801181216390_AddingWorkSpaceIdToTasks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801181337520_AddingStatusToClients.resx">
+      <DependentUpon>201801181337520_AddingStatusToClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801181800237_ChangingHourRateToString.resx">
+      <DependentUpon>201801181800237_ChangingHourRateToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801181914363_FillCurrenciesTable.resx">
+      <DependentUpon>201801181914363_FillCurrenciesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803052057521_InitialCreate1.resx">
+      <DependentUpon>201803052057521_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803052100097_ChangingAutomaticTimerValue.resx">
+      <DependentUpon>201803052100097_ChangingAutomaticTimerValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803052242211_AddingNoteTheme.resx">
+      <DependentUpon>201803052242211_AddingNoteTheme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803052243342_FillingUpNoteTheme.resx">
+      <DependentUpon>201803052243342_FillingUpNoteTheme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803052319432_RemoveColorRefFromNotes.resx">
+      <DependentUpon>201803052319432_RemoveColorRefFromNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803071427369_AddingTwoColorsToNoteTheme.resx">
+      <DependentUpon>201803071427369_AddingTwoColorsToNoteTheme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803071451429_AddingBgThemeInNotes.resx">
+      <DependentUpon>201803071451429_AddingBgThemeInNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803072001592_CreateUserWorkspace.resx">
+      <DependentUpon>201803072001592_CreateUserWorkspace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803072003229_AddingStatusForUserWorkspace.resx">
+      <DependentUpon>201803072003229_AddingStatusForUserWorkspace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803072206438_AddingCurrentWorkspace.resx">
+      <DependentUpon>201803072206438_AddingCurrentWorkspace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803081342192_RemovingColorIdFromProject.resx">
+      <DependentUpon>201803081342192_RemovingColorIdFromProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803081636277_AddingRefTOUserInNotes.resx">
+      <DependentUpon>201803081636277_AddingRefTOUserInNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803081637515_AddingStatusToNotes.resx">
+      <DependentUpon>201803081637515_AddingStatusToNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803111928338_AddingUserProjectWorkspaceConstrains.resx">
+      <DependentUpon>201803111928338_AddingUserProjectWorkspaceConstrains.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803121943207_NewDbSet.resx">
+      <DependentUpon>201803121943207_NewDbSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803131804267_AddCreateDateToProject.resx">
+      <DependentUpon>201803131804267_AddCreateDateToProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803261751237_AddingWorkspaceRoles.resx">
+      <DependentUpon>201803261751237_AddingWorkspaceRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803270714044_ChangingNameOfRole.resx">
+      <DependentUpon>201803270714044_ChangingNameOfRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803281841006_AddingTagAndTimeEntryTag.resx">
+      <DependentUpon>201803281841006_AddingTagAndTimeEntryTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803311420095_ProjectExtension.resx">
+      <DependentUpon>201803311420095_ProjectExtension.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804011953244_UserWorkspaceBillings.resx">
+      <DependentUpon>201804011953244_UserWorkspaceBillings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804011959488_AddingStatusToWorkspaceBilling.resx">
+      <DependentUpon>201804011959488_AddingStatusToWorkspaceBilling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804051107398_AddingUserBilling.resx">
+      <DependentUpon>201804051107398_AddingUserBilling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804051116159_RemovingUnusedClass.resx">
+      <DependentUpon>201804051116159_RemovingUnusedClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804051119228_ChangingUserBillings.resx">
+      <DependentUpon>201804051119228_ChangingUserBillings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804071625221_AddingMoreStatus.resx">
+      <DependentUpon>201804071625221_AddingMoreStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804080931585_AddingCurrencyToWorkspace.resx">
+      <DependentUpon>201804080931585_AddingCurrencyToWorkspace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804081459160_AddingBillingsToProject.resx">
+      <DependentUpon>201804081459160_AddingBillingsToProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804081503456_AddingCurrencyToProject.resx">
+      <DependentUpon>201804081503456_AddingCurrencyToProject.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50957</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44304/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

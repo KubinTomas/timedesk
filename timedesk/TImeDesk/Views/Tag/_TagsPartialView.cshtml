@@ -1,0 +1,62 @@
+﻿@using TImeDesk.Models.Database
+@model TImeDesk.ViewModel.TagViewModel
+
+<table class="table " id="TagsTable">
+    <thead>
+        <tr>
+            <th class="">
+                <input type="checkbox" class="select-all checkbox" name="select-all" />
+            </th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="ProjectBody">
+
+        @foreach (var tag in Model.Tags)
+        {
+            <tr>
+                <td class="">
+                    <input type="checkbox" class="select-item checkbox" name="select-item" value="1000" />
+                </td>
+                <td>@tag.Name </td>
+                <td><button data-customer-id="@tag.Id" class="btn-link js-delete"><i class="fa fa-trash" style="color: #B6B6B6;" aria-hidden="true"></i></button></td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //Initialize data table
+        $('#TagsTable').dataTable({
+            "columnDefs": [{
+                "targets": [0,2],
+
+                "orderable": false
+            }]
+        });
+
+        $('#TagsTable').on("click", ".js-delete" ,function () {
+            var button = $(this);
+     
+            $.ajax({
+                url: ('@Url.Action("DeleteTag", "Tag")'),
+                data: "id=" + button.attr("data-customer-id"),
+                method: "POST",
+                success: function () {
+                   // Data table neaktualizuje data
+               //    button.parents("tr").remove();
+                    //table.row(button.parents("tr")).remove().draw();
+                    $('#Tags__List').load('@Url.Action("GetTagPartialViewResult", "Tag")');
+                }
+            });
+
+        });
+
+    });
+
+</script>

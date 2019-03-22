@@ -1,0 +1,235 @@
+﻿@using Microsoft.AspNet.Identity
+@using TImeDesk.Models.Database
+@using TImeDesk.ViewModel.Workspace.Permissions
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300' rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+
+    <!-- Google charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="@Url.Content("~/Content/sidebar.css")" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+    <!--
+    <div class="header">
+        <div class="logo">
+            <i class="fa fa-tachometer"></i>
+            <span>TimeDesk</span>
+        </div>
+        <a href="#" class="nav-trigger"><span></span></a>
+    </div>
+        -->
+    @{
+        var userPermission = (UserWorkspaceRoles)ViewBag.UserWorkspaceRoles;
+    }
+    <div class="side-nav" id="scrollable">
+        <div class="logo">
+            <div class="SiderBar__LogoPosition">
+                <i class="fa fa-shield" id="SiderBar__HeaderLogo"></i>
+                <span>TimeGuard</span>
+            </div>
+        </div>
+        <nav class="nav">
+            <ul id="SiderBar__Ul">
+
+                <li class="" id="timer">
+                    <a href='@Url.Action("Index", "Timer")'>
+                        <span><i class="fa fa-clock-o" id="SiderBar__IconSetUp"></i></span>
+                        <span class="">Timer</span>
+
+                    </a>
+                </li>
+
+                <li>
+                    <a href='@Url.Action("Index", "Dashboard")'>
+                        <span><i class="fa fa-bar-chart" id="SiderBar__IconSetUp"></i></span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href='@Url.Action("Index", "ToDoList")'>
+                        <span><i class="fa fa-sticky-note" id="SiderBar__IconSetUp"></i></span>
+                        <span>ToDo List</span>
+                    </a>
+                </li>
+                @*<li>
+                    <a href="#">
+                        <span><i class="fa fa-bell" id="SiderBar__IconSetUp"></i></span>
+                        <span>Reminder</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span><i class="fa fa-calendar-o" id="SiderBar__IconSetUp"></i></span>
+                        <span>Plan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span><i class="fa fa-print" id="SiderBar__IconSetUp"></i></span>
+                        <span>Reports</span>
+                    </a>
+                </li>*@
+                <li>
+                    <span style="color: gray">MANAGE</span>
+                </li>
+                @if (userPermission.CanManageProjects)
+                {
+                    <li class="">
+                        <a href='@Url.Action("Index", "Project")'>
+                            <span><i class="fa fa-folder" id="SiderBar__IconSetUp"></i></span>
+                            <span>Projects</span>
+                        </a>
+                    </li>
+                }
+                @if (userPermission.CanManageProjects)
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Task")">
+                            <span><i class="fa fa-tasks" id="SiderBar__IconSetUp"></i></span>
+                            <span>Tasks</span>
+                        </a>
+                    </li>
+                }
+                @if (userPermission.CanManageBudget)
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Billing")">
+                            <span><i class="fa fa-dollar" id="SiderBar__IconSetUp"></i></span>
+                            <span>Billings</span>
+                        </a>
+                    </li>
+                }
+                @if (userPermission.CanManageProjects)
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Client")">
+                            <span><i class="fa fa-user-circle-o " id="SiderBar__IconSetUp"></i></span>
+                            <span>Clients</span>
+                        </a>
+                    </li>
+                }
+                @if (userPermission.CanManageProjects)
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Tag")">
+                            <span><i class="fa fa-tags" id="SiderBar__IconSetUp"> </i></span>
+                            <span>Tags</span>
+                        </a>
+                    </li>
+                }          
+                <li>
+                    <a href="@Url.Action("Index", "Workspace")">
+                        <span><i class="fa fa-briefcase" id="SiderBar__IconSetUp"></i></span>
+                        <span>Workspaces</span>
+                    </a>
+                </li>
+                @*<li>
+                    <a href="#">
+                        <span><i class="fa fa-group" id="SiderBar__IconSetUp"></i></span>
+                        <span>Teams</span>
+                    </a>
+                </li>*@
+                <li>
+                    <a href='@Url.Action("Index", "Help")'>
+                        <span><i class="fa fa-question-circle" id="SiderBar__IconSetUp"></i></span>
+                        <span>Help</span>
+                    </a>
+                </li>
+                @*<li>
+                    <a href="#">
+                        <span><i class="fa fa-bars" id="SiderBar__IconSetUp"></i></span>
+                        <span>More</span>
+                    </a>
+                </li>*@
+                <li>
+                    <a href='@Url.Action("Index", "Profile")'>
+                        <span><i class="fa fa-user-circle" id="SiderBar__IconSetUp"></i></span>
+                        <span>Profile</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <div class="title">
+
+        </div>
+
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+
+
+        @*<div class="main">
+                <div class="widget">
+                    <div class="title">Number of views</div>
+                    <div class="chart"></div>
+                </div>
+                <div class="widget">
+                    <div class="title">Number of likes</div>
+                    <div class="chart"></div>
+                </div>
+                <div class="widget">
+                    <div class="title">Number of comments</div>
+                    <div class="chart"></div>
+                </div>
+
+            </div>*@
+
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.nav-trigger').click(function () {
+                $('.side-nav').toggleClass('visible');
+            });
+
+        });
+
+        $(document).ready(function () {
+
+            var fullpath = window.location.pathname;
+            var filename = fullpath.replace(/^.*[\\\/]/, '');
+            var currentLink = $('a[href="/' + filename + '"]'); //Selects the proper a tag
+            currentLink.parent().addClass('SiderBar__ActiveSite');
+
+        });
+
+    </script>
+
+
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/lib")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿@model TImeDesk.ViewModel.NotesViewModel
+
+<div class="ToDoList__StickNoteWrapper">
+    <div class="ToDoList__ChangeColorWrapper" style="background-color:@Model.Note.NoteColorTheme.Header" >
+        @foreach (var c in Model.NoteColorThemes)
+         {
+        <text> <div class="ToDoList__ColorWrapper" style="background-color: @c.Header" data-id="@c.Id"></div></text>
+         }
+
+
+    </div>
+    <div class="ToDoList__StickNote">
+        <div class="ToDoList__StickNoteHeader" style="background-color: @Model.Note.NoteColorTheme.Header">
+            <div class="ToDoList__HeaderWrapper">
+                <input type="text" class="ToDoList__HeaderTitle" placeholder="Name.." value="@Model.Note.Header" onblur="UpdateNote(this);" />
+                <div class="ToDoList__HeaderIcons">
+                    <span style="margin-right: 10px;" class="ToggleColorChangeDiv"><i class="fa fa-ellipsis-h ToggleColorChangeDiv"></i></span>
+                    <span data-id="@Model.Note.Id" class="DeleteNote"><i class="fa fa-trash"></i></span>
+                </div>
+                <div class="ToDoList__StickNoteBody" style="background-color:@Model.Note.NoteColorTheme.Body">
+                    <textarea class="ToDoList__TextArea" onblur="UpdateNote(this);">@Model.Note.Content</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

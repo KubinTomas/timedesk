@@ -1,0 +1,70 @@
+﻿
+@using TImeDesk.Models.Database
+@model TImeDesk.ViewModel.ClientViewModel
+
+<table class="table " id="Client__Table">
+    <thead>
+        <tr>
+            <th class="">
+                <input type="checkbox" class="select-all checkbox" name="select-all" />
+            </th>
+            <th>Name</th>
+            <th>Workspace</th>  
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="ProjectBody">
+
+        @foreach (var client in Model.Clients)
+        {
+            <tr>
+                <td class="">
+                    <input type="checkbox" class="select-item checkbox" name="select-item" value="1000" />
+                </td>
+                <td>@client.Name</td>
+                <td>@((client.WorkSpace != null) ? client.WorkSpace.Name : ""  ) </td>
+                <td><button data-customer-id="@client.Id" class="btn-link js-delete"><i class="fa fa-trash" style="color: #B6B6B6;" aria-hidden="true"></i></button></td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //Initialize data table
+        $('#Client__Table').dataTable({
+            //Remove paging
+          //  "paging": false,
+            //Remove info ("Showing x entries of ... )
+           // "bInfo": false,
+            "order": [[1, "desc"]],
+            "columnDefs": [{
+                "targets": [0,3],
+
+                "orderable": false
+            }]
+        });
+
+        $('#Client__Table').on("click", ".js-delete" ,function () {
+            var button = $(this);
+            //alert("Test");
+            $.ajax({
+                url: ('@Url.Action("DeleteClient", "Client")'),
+                data: "id=" + button.attr("data-customer-id"),
+                method: "POST",
+                success: function () {
+                   // Data table neaktualizuje data
+                  //  button.parents("tr").remove();
+                   // table.row(button.parents("tr")).remove().draw();
+                    $('#Client__List').load('@Url.Action("GetClientPartialViewResult", "Client")');
+                }
+            });
+
+        });
+
+    });
+
+</script>

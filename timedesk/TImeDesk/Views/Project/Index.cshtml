@@ -1,0 +1,107 @@
+﻿@using TImeDesk.Models.Database
+@model TImeDesk.ViewModel.ProjectClientViewModel
+
+
+<div class="Project__Wrapper">
+    <div class="Project__Header">
+        <div class="Project__Title">Projects</div>
+        <button class="btn Project__CreateBtn" style="float:right" data-toggle="modal" data-target="#myModal">Create Project</button>
+    </div>
+    @*Rozšiřující lišta pro další fitraci
+        <div class="Project__Filter">
+        <div class="TimerForm__flex-container">
+            <div style="flex-grow: 1.5">1</div>
+            <div style="flex-grow: 1.5">2</div>
+            <div style="flex-grow: 1.5">3</div>
+            <div style="flex-grow: 1">2</div>
+            <div style="flex-grow: 8">3</div>
+            <div style="flex-grow: 3">2</div>
+
+        </div>
+    </div>*@
+    <div class="Project__List"  id ="Project__List" >
+        @Html.Partial("_ProjectsPartialView")
+
+    </div>
+</div>
+
+@Html.Partial("_AddProjectModalPartial")
+
+
+    
+
+    <script>
+
+    
+      
+        $(function () {
+
+            //button select all or cancel
+            $("#select-all").click(function () {
+                var all = $("input.select-all")[0];
+                all.checked = !all.checked
+                var checked = all.checked;
+                $("input.select-item").each(function (index, item) {
+                    item.checked = checked;
+                });
+            });
+
+            //button select invert
+            $("#select-invert").click(function () {
+                $("input.select-item").each(function (index, item) {
+                    item.checked = !item.checked;
+                });
+                checkSelected();
+            });
+
+            //button get selected info
+            $("#selected").click(function () {
+                var items = [];
+                $("input.select-item:checked:checked").each(function (index, item) {
+                    items[index] = item.value;
+                });
+                if (items.length < 1) {
+                    alert("no selected items!!!");
+                } else {
+                    var values = items.join(',');
+                    console.log(values);
+                    var html = $("<div></div>");
+                    html.html("selected:" + values);
+                    html.appendTo("body");
+                }
+            });
+
+            //column checkbox select all or cancel
+            $("input.select-all").click(function () {
+                var checked = this.checked;
+                $("input.select-item").each(function (index, item) {
+                    item.checked = checked;
+                });
+            });
+
+            //check selected items
+            $("input.select-item").click(function () {
+                var checked = this.checked;
+                console.log(checked);
+                checkSelected();
+            });
+
+            //check is all selected
+            function checkSelected() {
+                var all = $("input.select-all")[0];
+                var total = $("input.select-item").length;
+                var len = $("input.select-item:checked:checked").length;
+                console.log("total:" + total);
+                console.log("len:" + len);
+                all.checked = len === total;
+            }
+        });
+        var timerStart = Date.now();
+        $(document).ready(function() {
+            console.log("Time until DOMready: ", Date.now()-timerStart);
+        });
+        $(window).load(function() {
+            console.log("Time until everything loaded: ", Date.now()-timerStart);
+        });
+    </script>
+

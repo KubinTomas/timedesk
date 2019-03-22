@@ -1,0 +1,136 @@
+﻿@using TImeDesk.Models.Database
+@model TImeDesk.ViewModel.Workspace.Project.CreateWorkspaceProjectPartialView
+
+
+<div class="Header">
+    <div class="Title"></div>
+</div>
+
+<div class="Body">
+    <div class="InviteBody">
+        @using (Ajax.BeginForm("SaveProject", "WorkspaceProject", new AjaxOptions { HttpMethod = "POST", OnSuccess = "ShowAllProjects" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(c => c.Project.Name)
+                @Html.TextBoxFor(c => c.Project.Name, new { @class = "form-control", required = "required", placeholder = "Project name.." })
+            </div>
+            <div class="form-group">
+               
+                @Html.LabelFor(c => c.Project.Budget, "Budget [" + Model.CurrencyName + "]")
+                @Html.TextBoxFor(c => c.Project.Budget, new {@class = "form-control", type = "number", min = "0", placeholder = "Project budget.."})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(c => c.Project.HourLimit)
+                @Html.TextBoxFor(c => c.Project.HourLimit, new { @class = "form-control", type= "number", min = "0", placeholder = "Total hours.." })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(c => c.Project.ColorString)
+              
+                <div  style = "float:right;">
+                    <input type='text' id="togglePaletteOnly" />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(c => c.Project.Client)
+                @Html.DropDownListFor(p => p.Project.ClientId, new SelectList(Model.Clients, "Id", "Name"), new {@class = "Project__BtnAdd btn-add.btn-add-input", @id = "clientList"})
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(c => c.Project.DeadLine)
+                
+                @Html.TextBoxFor(c => c.Project.DeadLine, new {@class = "form-control",type= "date", min = DateTime.Today.ToString("YYYY-MM-DD"),required = "required", placeholder = "Deadline", id="DeadLinePicker"})
+               
+            </div>
+
+            @Html.HiddenFor(c => c.WorkspaceId)
+            @Html.HiddenFor(c => c.Project.Id)
+            @Html.HiddenFor(c => c.Project.ColorString, new { @id = "color-holder" })
+
+            <button type="submit" class="btn btn-success">@(Model.Project.Id == 0? "Create project" : "Save")</button>
+        }
+    </div>
+</div>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/spectrum.js")"></script>
+
+<script>
+    $('select').on('change', function () {
+        if (this.value == 'Without client') {
+            $("#clientList").prop("selectedIndex", 0);
+        }
+    });
+
+
+    function ShowAllProjects() {
+        GetProjectsPartialView();
+    }
+
+    $(document).ready(function () {
+
+        var isClientSet = '@(Model.Project.ClientId)';
+        var selectedItem = $("#clientList")[0].selectedIndex + 2;
+
+        $("#clientList").prepend('<option value="Without client">Without client</option>');
+        $("#clientList").prepend('<option selected hidden value="Select client">&#xf067;Select client</option>');
+
+        if (isClientSet != "")
+           $('#clientList option').eq(selectedItem).prop('selected', true);
+
+        var today = moment().format('YYYY-MM-DD');
+
+        var date = '@(Model.Project.DeadLine.HasValue? Model.Project.DeadLine.Value.ToString("yyyy-MM-dd") : DateTime.Today.ToString("yyyy-MM-dd"))';
+        $('#DeadLinePicker').val(date);
+    });
+
+        var id = 1;
+
+        var cusColors = [
+            "#000", "#444", "#33CC00", "#90f", "#f0f", "#f00", "#f90", "#ff0", "#0f0", "#0ff", "#c00", "#e69138",
+            "#3366FF", "#00f", "#741b47"
+        ];
+
+        var color = '@(Model.Project.ColorString)';
+
+    if (color == "")
+            color = cusColors[Math.floor(Math.random() * cusColors.length)];
+
+    $('#color-holder').val(color);
+
+
+        $("#togglePaletteOnly").spectrum({
+            showPaletteOnly: true,
+            togglePaletteOnly: true,
+            togglePaletteMoreText: 'Custom color',
+            togglePaletteLessText: 'Hide',
+            hideAfterPaletteSelect: true,
+            preferredFormat: 'hex3',
+            color: color,
+            change: function (color) {
+                $('#color-holder').val(color);
+            },
+            palette: [
+                ["#000", "#444", "#33CC00", "#90f", "#f0f"],
+                ["#f00", "#f90", "#ff0", "#0f0", "#0ff"],
+                ["#c00", "#e69138", "#3366FF", "#00f", "#741b47"]
+
+            ]
+
+        });
+
+        //Convert RGB color to HEX
+
+        function componentToHex(c) {
+            var hex = c.toString(16);
+            return hex.length == 1 ? "0" + hex : hex;
+        }
+
+        function rgbToHex(r, g, b) {
+            return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        }
+
+    //$(function () {
+    //    $('#datetimepicker1').datetimepicker({
+
+    //    });
+    //});
+</script>

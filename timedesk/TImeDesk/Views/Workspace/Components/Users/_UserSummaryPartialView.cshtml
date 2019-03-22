@@ -1,0 +1,65 @@
+﻿@using TImeDesk.ViewModel
+@model WorkspaceDetailViewModel
+
+<div class="Header">
+    <div class="Title">Users</div>
+  
+    <div class=" @(Model.WorkSpace.IsDefault? "NoPermission LeaveWorkspaceBtn": "LeaveWorkspace")" user-id="@Model.UserId"><a class="btn btn-danger  @(Model.WorkSpace.IsDefault? "NoPermission LeaveWorkspaceBtn": "LeaveWorkspace")" user-id="@Model.UserId">Leave</a></div>
+    <div class="@(Model.Role.CanManageUsers && !Model.WorkSpace.IsDefault? "InviteContainer": "NoPermission")" ><a class="btn btn-success @(Model.Role.CanManageUsers && !Model.WorkSpace.IsDefault? "InviteContainer": "NoPermission")">Invite new user</a></div>
+
+</div>
+<div class="Body">
+    <table class="table dataTable  table-hover " id="UserTable">
+        <thead class="">
+        <tr>
+            <th>Name</th>
+            <th>Nickname</th>
+
+           
+            <th>Status</th>
+            <th>Member since</th>
+            
+            @if (Model.Role.CanManageUsers)
+            {
+                <th style="width: 50px;">Profil</th>
+                <th style="width: 50px;">Settings</th>
+            }
+         
+        </tr>
+        </thead>
+        <tbody id="ProjectBody">
+
+        @foreach (var user in Model.UserWorkspaces)
+        {
+            <tr>
+                <td>@user.ApplicationUser.UserName </td>
+                <td>Nickname</td>
+
+                <td>Online</td>
+                <td>@user.Joined.ToShortDateString()</td>
+                @if (Model.Role.CanManageUsers)
+                {
+                <td><a data-user-id="@user.ApplicationUser.Id" class="btn-link userWorkspaceProfil" style="margin-left: 35%;"><i class="fa fa-user" style="color: #B6B6B6;" aria-hidden="true"></i></a></td>
+                <td><a data-customer-id="" class="btn-link" style="margin-left: 35%;"><i class="fa fa-cog" style="color: #B6B6B6;" aria-hidden="true"></i></a></td>
+                }
+            </tr>
+        }
+
+
+        </tbody>
+    </table>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        //Initialize data table
+        $('#UserTable').dataTable({
+          
+        
+        });
+    });
+
+</script>

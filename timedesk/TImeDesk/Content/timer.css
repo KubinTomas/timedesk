@@ -1,0 +1,91 @@
+﻿.nav-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: stretch;
+   
+    z-index: 1001;
+}
+.FluidTextInput__container {
+    height: 100%;
+    width: 100%;
+}
+.text__noOverflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.TimeForm__timeEntryDescription {
+    width: 100%;
+    min-width: 200px;
+    height: 66px;
+    line-height: 66px !important;
+    padding: 0 10px 0 20px;
+    border: 0;
+    font-size: inherit;
+    overflow: hidden;
+    white-space: nowrap;
+    background: white;
+    display: block;
+    
+}
+input {
+    outline:none;
+}
+
+.TimerForm__flex-container {
+    z-index: 301;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    height: 66px;
+    display: flex;
+    align-items: stretch;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2);
+    background: #fff;
+    width: 100%;
+}
+.TimerForm__flex-div {
+    text-align: center;
+    display: inline-block;
+    /*position: relative; */ /*Vadí tomu drop down*/
+    margin: auto;
+}
+
+.TimerForm__flex-container > div {
+    /*background-color: DodgerBlue;*/
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    /*flex: 0 0 20px;*/
+}
+.TimeForm__PointerCursor {
+    cursor: pointer;
+}
+.t {
+    position: fixed;
+    height: 66px;
+    width: 100%;
+    z-index: 305;
+    right: 0;
+    overflow: auto;
+}
+#Timer__Ul {
+    padding: 0;
+    list-style-type: none;
+    margin: auto;
+}
+/* Media screens */
+    @media screen and (min-width: 350px) {
+        .nav-wrapper {
+            width: calc(100% - 70px);
+        }
+    }
+
+    @media screen and (min-width: 800px) {
+        .nav-wrapper {
+            width: calc(100% - 180px);
+        }
+    }

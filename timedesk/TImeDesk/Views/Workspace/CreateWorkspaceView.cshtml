@@ -1,0 +1,23 @@
+﻿@using TImeDesk.Models.Database
+@model WorkSpace
+
+<div class="CreateWorkspace__Wrapper">
+
+    <div class="Header">
+        <span class="Title">Create workspace</span>
+    </div>
+    <div class="Wrapper">
+        <div class="Form">
+            @using (Html.BeginForm("CreateWorkspace", "Workspace"))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(w => w.Name)
+                    @Html.TextBoxFor(w => w.Name, new { @class = "form-control", required = "required" })
+                </div>
+                    <button type="submit" class="btn btn-success">Create</button>
+                    <a href="@Url.Action("Index", "Workspace")" class="btn btn-danger">Back</a>             
+            }
+        </div>
+    </div>
+
+</div>

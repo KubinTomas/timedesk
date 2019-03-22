@@ -1,0 +1,63 @@
+﻿
+@using TImeDesk.ViewModel
+@model ProjectWorkspaceDetailViewModel
+
+
+<div class="Header" data-id="@Model.Project.Id" id="ProjectIdHolder">
+    <div class="Title">@Model.Project.Name</div>
+</div>
+<div class="Body">
+    <div class="UserProjects">
+        <div class="CenterHeader">Users working on project</div>
+        <div class="Divider"></div>
+
+        <table class="table dataTable  table-hover " id="UserProjectTable">
+            <thead class="">
+                <tr>
+                    <th>Name</th>
+                    <th>Nickname</th>
+                    <th>Role</th>
+                    <th>Total time spent [H]</th>
+                    <th style="width: 100px;">Remove from project</th>
+
+                </tr>
+            </thead>
+            <tbody id="ProjectBody">
+
+                @foreach (var user in Model.UserProjectTimeList)
+            {
+                    <tr>
+                        <td>@user.User.UserName </td>
+                        <td>Nickname </td>
+                        <td>Role </td>
+                        <td>@user.TimeWorkedOnProject</td>
+                        <td><a user-id="@user.User.Id" class="btn-link removeUserFromProject" style="margin-left: 35%;"><i class="fa fa-minus" style="color: #B6B6B6;" aria-hidden="true"></i></a></td>
+
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+
+
+
+
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        //Initialize data table
+        $('#UserProjectTable').dataTable({
+
+
+        });
+
+    });
+
+</script>

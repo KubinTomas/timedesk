@@ -1,0 +1,113 @@
+﻿@model TImeDesk.Models.Database.UserWorkspaceRoles
+<div class="Wrapper">
+    <!-- Home -->
+    <div class="Dashboard">
+        <div class="ItemWrapper">
+            <span class="Icon C1">
+
+                <i class="fa fa-home"></i>
+
+            </span>
+            <div class="TextToIcon">
+                <ul>
+
+                    <li class="C1t"><strong id="SummaryProjectCount">Dashboard</strong></li>
+                    <li>Dashboard</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Permissions -->
+    <div class="@(Model.CanManageRoles? "ShowPermissions": "NoPermission")">
+        <div class="ItemWrapper">
+            <span class="Icon C2">
+
+                <i class="fa fa-address-book"></i>
+
+            </span>
+            <div class="TextToIcon">
+                <ul>
+
+                    <li class="C2t"><strong id="SummaryProjectCount">Roles</strong></li>
+                    <li>Dashboard</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="@(Model.CanManageProjects ? "ShowProjects" : "NoPermission")">
+        <div class="ItemWrapper">
+            <span class="Icon C3">
+
+                <i class="fa fa-folder"></i>
+
+            </span>
+            <div class="TextToIcon">
+                <ul>
+
+                    <li class="C3t"><strong id="SummaryProjectCount">Projects</strong></li>
+                    <li>Dashboard</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Budget -->
+    <div class="@(Model.CanManageBudget? "CanManageBudget": "NoPermission")">
+        <div class="ItemWrapper">
+            <span class="Icon C4">
+
+                <i class="fa fa-dollar"></i>
+
+            </span>
+            <div class="TextToIcon">
+                <ul>
+
+                    <li class="C4t"><strong id="SummaryProjectCount">Budget</strong></li>
+                    <li>Dashboard</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--  Statistic -->
+    <div class="@(Model.CanManageStatistic? "CanManageStatistic": "NoPermission")">
+        <div class="ItemWrapper">
+            <span class="Icon C6">
+
+                <i class="fa fa-pie-chart"></i>
+
+            </span>
+            <div class="TextToIcon">
+                <ul>
+
+                    <li class="C6t"><strong id="SummaryProjectCount">Statistic</strong></li>
+                    <li>Dashboard</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Config -->
+    <div class="@(Model.CanManageSettings? "CanManageSettings": "NoPermission")">
+        <div class="ItemWrapper">
+            <span class="Icon C5">
+
+                <i class="fa fa-cog"></i>
+
+            </span>
+            <div class="TextToIcon">
+                <ul>
+
+                    <li class="C5t"><strong id="SummaryProjectCount">Settings</strong></li>
+                    <li>Dashboard</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

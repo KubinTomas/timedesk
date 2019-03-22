@@ -1,0 +1,188 @@
+﻿.Dashboard__Wrapper {
+    overflow: hidden;
+    width: 90%;
+    height: 100%;
+    background-color: #f6f6f6;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+
+    .Dashboard__InnerWrapper {
+        width: 100%;
+        height: 100%;
+        background-color: #f6f6f6;
+
+        .Dashboard__FilterMenu {
+            width: 100%;
+            height: 85px;
+            background-color: #f6f6f6;
+            position: relative;
+
+
+            .Dashboard__Title {
+                font-size: 2.4em;
+                float: left;
+                font-weight: bold;
+            }
+
+            .Dashboard__DatePicker {
+                position: relative;
+                float: right;
+                margin-top: 10px;
+                font-size: 1.4em;
+
+                .Picker {
+                    background: #f6f6f6;
+                    cursor: pointer;
+                    width: 100%;
+                }
+            }
+        }
+
+        .Dashboard__SummaryWrapper {
+            width: 100%;
+            height: 85px;
+            background-color: #f6f6f6;
+            display: flex;
+            margin-top: 25px;
+        }
+
+        .Dashboard__SummaryWrapper > div {
+            background-color: white;
+            width: 100%;
+            height: 100%;
+            margin: 0 5px 0 5px;
+            text-align: center;
+            font-size: 1em;
+
+
+            .Dashboard__ItemWrapper {
+                height: 100%;
+                width: 100%;
+                font-size: 1.2em;
+
+
+                .Dashboard__Icon {
+                    height: 100%;
+                    width: 35%;
+                    float: left;
+                    font-size: 2em;
+                    line-height: 85px;
+                }
+
+
+                .Dashboard__TextToIcon {
+                    height: 100%;
+                    width: 65%;
+                    float: left;
+                    display: block;
+                    margin: - 10px;
+                    word-wrap: break-word;
+
+                    ul {
+                        list-style-type: none;
+                        float: right;
+                        padding: 10px 5px 0 0;
+                        word-wrap: break-word;
+                        max-width: 100%;
+                        max-height: 85px;
+
+                        li {
+                            text-align: right;
+                            word-wrap: break-word;
+                            font-size: 0.8em;
+                            color: #B6B6B6;
+                            word-wrap: break-word;
+                            /*width: 100%;
+
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;*/
+                            strong {
+                                // font-size: 1.8em;
+                                //width: 100%;
+                                word-wrap: break-word;
+                                font-size: calc(0.4vw + 0.4vw + 0.4vmin);
+                                //     max-width: 100px;
+                                text-overflow: ellipsis;
+                                /* Required for text-overflow to do anything */
+                                //  white-space: nowrap;
+                                overflow: hidden;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .Dashboard__Icon:hover {
+            transform: scale(1.1);
+        }
+
+
+        .Dashboard__MainChartWrapper {
+            width: 100%;
+            margin-top: 25px;
+            height: 500px;
+            background-color: #f6f6f6;
+        }
+
+        .Dashboard__SubChartWrapper {
+            width: 100%;
+            margin-top: 25px;
+            height: 400px;
+            background-color: #f6f6f6;
+            display: flex;
+        }
+
+        .Dashboard__SubChartWrapper > div {
+            background-color: white;
+            width: 50px;
+            height: 100%;
+            margin: 0 5px 0 5px;
+            text-align: center;
+            font-size: 1em;
+        }
+
+        .Dashboard__Projects {
+            width: 100%;
+            height: 100%;
+
+
+            .ProjectTitleWrapper {
+                width: 100%;
+                height: 10%;
+                background-color: white;
+
+                .Title {
+                    font-size: calc(0.6vw + 0.6vw + 0.6vmin);
+                    font-weight: bold;
+                    text-align: center;
+                    vertical-align: middle;
+                    line-height: 40px;
+                }
+            }
+
+            .ProjectsWrapper {
+                width: 100%;
+                height: 90%;
+                background-color: white;
+
+                .Content {
+                    float: left;
+                    padding: 15px;
+                    font-size: calc(0.3vw + 0.3vw + 0.3vmin);
+                    text-align: left;
+
+                    ul {
+                        list-style-type: none;
+                        padding: 0;
+
+                        li {
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

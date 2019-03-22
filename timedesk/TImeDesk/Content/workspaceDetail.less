@@ -1,0 +1,224 @@
+﻿.Dashboard__Wrapper {
+    overflow: hidden;
+    width: 90%;
+    height: 100%;
+    background-color: #f6f6f6;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+
+
+
+    .HeaderWrapper {
+        position: relative;
+        width: 100%;
+        height: 100px;
+
+
+
+        .Title {
+            position: relative;
+            font-size: 3.5em;
+            float: left;
+            font-weight: bold;
+        }
+    }
+
+    .NavigationBarWrapper {
+        position: relative;
+        width: 100%;
+        height: 100px;
+        //background-color: rgb(255, 146, 146);
+        .Wrapper {
+            width: 100%;
+            height: 85px;
+            background-color: #f6f6f6;
+            display: flex;
+            margin-top: 25px;
+
+            .NoPermission {
+                opacity: 0.6;
+                cursor: no-drop;
+            }
+        }
+
+        .Wrapper > div {
+            background-color: white;
+            width: 100%;
+            height: 100%;
+            margin: 0 5px 0 5px;
+            text-align: center;
+            font-size: 1em;
+            cursor: pointer;
+
+            &:first-child {
+                margin: 0;
+            }
+
+            .ItemWrapper {
+                height: 100%;
+                width: 100%;
+                font-size: 1.2em;
+
+
+                .Icon {
+                    height: 100%;
+                    width: 50%;
+                    float: left;
+                    font-size: 2em;
+                    line-height: 85px;
+                }
+
+
+                .TextToIcon {
+                    height: 100%;
+                    width: 50%;
+                    float: left;
+                    display: block;
+                    margin: - 10px;
+                    word-wrap: break-word;
+
+                    ul {
+                        list-style-type: none;
+                        float: right;
+                        padding: 20px 5px 0 0;
+                        word-wrap: break-word;
+                        max-width: 100%;
+                        max-height: 85px;
+
+                        li {
+                            text-align: right;
+                            word-wrap: break-word;
+                            font-size: 0.6em;
+                            color: #B6B6B6;
+                            word-wrap: break-word;
+
+                            strong {
+                                word-wrap: break-word;
+                                font-size: calc(0.4vw + 0.4vw + 0.2vmin);
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .Icon:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .ContentWrapper {
+        position: relative;
+        width: 100%;
+        min-height: 500px;
+        margin-top: 50px;
+
+
+        .Header {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            font-size: 2.5em;
+            line-height: 50px;
+            text-align: center;
+
+            .Title {
+                position: relative;
+                float: left;
+                font-weight: bold;
+            }
+
+            .NoPermission {
+                opacity: 0.6;
+                cursor: no-drop;
+                float: right;
+                margin-right: 10px;
+                margin-top: 5px;
+            }
+
+            .InviteContainer {
+                float: right;
+                margin-right: 10px;
+                margin-top: 5px;
+            }
+
+            .LeaveWorkspace {
+                margin-top: 5px;
+                float: right;
+            }
+
+            .LeaveWorkspaceBtn {
+                margin-top: 5px;
+                float: right;
+            }
+        }
+
+        .Body {
+            position: relative;
+            width: 100%;
+            min-height: 400px;
+            margin-top: 50px;
+
+            .NameDivider {
+                width: 100%;
+                height: 50px;
+                margin: 20px 0 20px 0;
+                line-height: 50px;
+                text-align: center;
+                font-size: 2em;
+                font-weight: bold;
+            }
+
+
+            @import "workspaceUserProfil.less";
+            @import "workspaceSettings.less";
+            @import "workspaceProjectDetail.less";
+            @import "workspaceStatistic.less";
+
+            .InviteBody {
+                position: relative;
+                min-height: 50px;
+                width: 350px;
+            }
+
+            .UserProjects {
+                .CenterHeader {
+                    font-size: 1.5em;
+                    position: relative;
+                    font-weight: bold;
+                }
+
+                .Divider {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    position: relative;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #e3e3e3;
+                }
+            }
+
+            .AllUsers {
+                margin-top: 50px;
+
+                .CenterHeader {
+                    font-size: 1.5em;
+                    position: relative;
+                    font-weight: bold;
+                }
+
+                .Divider {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    position: relative;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #e3e3e3;
+                }
+            }
+        }
+    }
+}

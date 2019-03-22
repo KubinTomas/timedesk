@@ -1,0 +1,72 @@
+﻿@using TImeDesk.Models.Database
+@model TImeDesk.ViewModel.ProjectClientViewModel
+@*table table-bordered dataTable no-footer*@
+<table class="table dataTable  table-hover " id="ProjectTable">
+    <thead class="">
+    <tr>
+        <th class="">
+            <input type="checkbox" class="select-all checkbox" name="select-all" />
+        </th>
+        <th>Project</th>
+        <th>Client</th>
+        <th>Status</th>
+        <th>Workspace</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody id="ProjectBody">
+                
+    @foreach (var project in Model.Projects)
+    {
+        <tr>
+            <td class="">
+                <input type="checkbox" class="select-item checkbox" name="select-item" value="1000" />
+            </td>
+            <td>@project.Name <span class="Project__ColorHolder" style="background-color:@project.ColorString;  "></span> </td>
+            <td>@((project.Client != null) ? project.Client.Name : "No client"  ) </td>
+            <td>@((project.Status.Id == Status.Active)? project.Status.Name : "")</td>
+            <td>@project.WorkSpace.Name</td>
+            <td><button data-customer-id="@project.Id" class="btn-link js-delete"><i class="fa fa-trash" style="color: #B6B6B6;" aria-hidden="true"></i></button></td>
+        </tr>
+    }
+              
+              
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+       
+        //Initialize data table
+       $('#ProjectTable').dataTable({
+            //Remove paging
+            //"paging": false,
+            //Remove info ("Showing x entries of ... )
+            //"bInfo": false,
+            "order": [[1, "desc"]],
+            "columnDefs": [{
+                "targets": [0,5],
+                "orderable": false
+            }]
+        });
+      
+        $('#ProjectTable').on("click", ".js-delete" ,function () {
+            var button = $(this);
+            //alert("Test");
+            $.ajax({
+                url: ('@Url.Action("DeleteProject", "Project")'),
+                data: "id=" + button.attr("data-customer-id"),
+                method: "POST",
+                success: function () {
+                   // Data table neaktualizuje data
+                  //  button.parents("tr").remove();
+                   // table.row(button.parents("tr")).remove().draw();
+                      $('#Project__List').load('@Url.Action("GetProjectPartialViewResult", "Project")');
+                }
+            });
+
+        });
+ 
+    });
+
+</script>

@@ -1,0 +1,95 @@
+﻿
+/* Manage user billings */
+.BillingsWrapper {
+    width: 800px;
+    background-color: #f6f6f6;
+    display: flex;
+    margin: auto;
+
+    .Header {
+        width: 800px;
+        position: absolute;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: bold;
+
+        .LeftHeader {
+            width: 390px;
+            float: left;
+            height: 100%;
+        }
+
+        .RightHeader {
+            width: 390px;
+            margin-left: 20px;
+            height: 100%;
+            float: right;
+        }
+    }
+
+    .AssignedCurrency {
+        width: 390px;
+        float: left;
+        flex: 1;
+        border: solid 0.5px;
+        padding: 1em;
+        background-color: white;
+        margin-top: 50px;
+
+        .ItemWrapper {
+            color: #56cb0f;
+        }
+    }
+
+    .AvailableCurrency {
+        min-height: 200px;
+        width: 390px;
+        margin-left: 20px;
+        float: right;
+        flex: 1;
+        border: solid 0.5px;
+        padding: 1em;
+        background-color: white;
+        margin-top: 50px;
+    }
+
+    .ItemWrapper {
+        position: relative;
+        display: inline-block;
+        margin: 5px 5px 1px 1px;
+        border-radius: 10px;
+        color: #2B2B2B;
+        background: #f4f4f4;
+        background-clip: padding-box;
+        white-space: nowrap;
+        padding: 6px 8px;
+        font-size: 0.9em !important;
+        cursor: pointer;
+        letter-spacing: 1px;
+    }
+}
+/* User options */
+.KickUserOutOfWorkspaceBtn {
+    margin: 0 auto;
+    width: 100px;
+    height: 40px;
+    color: #ffffff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 40px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

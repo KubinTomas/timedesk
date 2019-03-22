@@ -1,0 +1,70 @@
+﻿@using TImeDesk.ViewModel.Workspace.Settings
+@model WorkspaceSettingsViewModel
+
+
+<div class="Header">
+    <div class="Title">Settings</div>
+    @if (!Model.WorkSpace.IsDefault)
+    {
+      <div class="DeleteWorkspace" style="float: right;"><a class="btn btn-danger">Delete workspace</a></div>
+    }
+</div>
+<div class="Body">
+
+    <div class="NameDivider">Details</div>
+    <div class="Workspace__DetailWrapper">
+        <table>
+            <thead>
+                <tr></tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td><span>Name:</span></td>
+                <td><strong>@Model.WorkSpace.Name</strong></td>
+            </tr>
+                
+            <tr>
+                <td><span>Created:</span></td>
+                <td><strong>@Model.WorkSpace.Created.ToShortDateString()</strong></td>
+            </tr>
+            <tr>
+                <td><span>Currency:</span></td>
+                <td><strong id="DetailsCurrencyName">@Model.WorkSpace.Currency.Name</strong></td>
+            </tr>
+            <tr>
+                <td><span>Total users:</span></td>
+                <td><strong>@Model.TotalUsersInWorkspace</strong></td>
+            </tr>
+            <tr>
+                <td><span>Default workspace:</span></td>
+                <td><strong>@Model.WorkSpace.IsDefault</strong></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+    <div class="NameDivider">Currency</div>
+
+    <div class="Workspace__CurrencyWrapper">
+        @using (Ajax.BeginForm("ChangeCurrency", "WorkspaceSettings", new AjaxOptions { HttpMethod = "POST", OnSuccess = "UpdateCurrencyName" }))
+        {
+            <div class="form-group">
+
+                @Html.DropDownListFor(p => Model.Currency.Id, new SelectList(Model.Currencies, "Id", "Name", Model.WorkSpace.Currency.Id), new { @class = " Project__BtnAdd btn-add.btn-add-input", @id = "currencyList", @style = "width: 100px;margin-top: 5px; height: 35px;" })
+
+                @Html.HiddenFor(c => Model.WorkSpace.Id)
+            </div>
+            <button class="btn Project__CreateBtn" type="submit">Change Currency</button>
+        }
+    </div>
+</div>
+
+<script>
+    function UpdateCurrencyName() {
+        var selectedCurrencyName = $("#currencyList :selected").text();
+
+        $("#DetailsCurrencyName").html(selectedCurrencyName);
+    }
+</script>

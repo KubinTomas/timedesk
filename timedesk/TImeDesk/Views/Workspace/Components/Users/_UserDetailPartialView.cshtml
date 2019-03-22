@@ -1,0 +1,43 @@
+﻿@using TImeDesk.ViewModel.Workspace.User
+@model UserDetailWorkspaceViewModel
+
+<div class="Header">
+    <div class="Title" id="UserDetailIdHolder" user-id ="@Model.UserWorkspace.ApplicationUser.Id">@Model.UserWorkspace.ApplicationUser.UserName</div>
+</div>
+
+<div class="Body">
+    
+    @*Basic informations*@
+    <div class="NameDivider">About user</div>
+    
+    
+    @*Manage user billings*@
+    <div class="NameDivider">Billings</div>
+
+    <div class="BillingsWrapper">
+        <div class="Header">
+            <div class="LeftHeader">Assigned currency</div>
+            <div class="RightHeader">Available currency</div>
+        </div>
+
+        <div class="AssignedCurrency">
+            @foreach (var billing in Model.AssignedBillings)
+            {
+                <div class="ItemWrapper UserWorkspaceDetailBillingItem" data-id="@billing.Id">@billing.HourRate @billing.Currency.Symbol</div>
+            }
+        </div>
+        <div class="AvailableCurrency">
+            @foreach (var billing in Model.AvailableBillings)
+            {
+                <div class="ItemWrapper UserWorkspaceDetailBillingItem" data-id="@billing.Id">@billing.HourRate @billing.Currency.Symbol</div>
+            }
+        </div>
+    </div>
+    
+    
+
+    @*Kick user out of workspace*@
+    
+    <div class="NameDivider">Options</div>
+    <div class="KickUserOutOfWorkspaceBtn" user-id="@Model.UserWorkspace.ApplicationUser.Id">Fire a user </div>
+</div>

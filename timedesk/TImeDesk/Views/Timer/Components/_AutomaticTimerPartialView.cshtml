@@ -1,0 +1,11 @@
+﻿@model TImeDesk.ViewModel.TimeEntryViewModel
+<div class="TimerForm__flex-div" style="flex-grow: 0.8">
+    <div id="ManualAutomatTimerHolder" style="color: black;">
+        <span id="Timer__Time">0:00:00</span>
+    </div>
+</div>
+<div class="TimerForm__flex-div TimeForm__PointerCursor" style="flex-grow: 1">
+
+    <span style="margin: auto;" onclick="SwitchTimerStatus();"> <img id="Timer__OnOff" value="@((Model.IsFinished)?"off" : "on")" src="@((Model.IsFinished)? @Url.Content("~/Images/Timer/play.png"): @Url.Content("~/Images/Timer/stop.png"))" height="42" width="42"></span>
+
+</div>

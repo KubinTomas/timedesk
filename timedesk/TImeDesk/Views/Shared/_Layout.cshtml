@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - TimeGuard</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <link href="@Url.Content("~/Content/animate.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />
+
+</head>
+<body>
+    
+    <!-- Top content -->
+    <div class="top-content">
+    
+        <!-- Top menu -->
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand">
+                        <i class="fa fa-shield"></i>
+                        <span>TimeGuard</span>
+                    </div>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="top-navbar-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("Login", "Account")">Login</a></li>
+                        <li><a href="@Url.Action("Register", "Account")">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+ 
+        <div class="top-content-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        @*<div class="Quote">
+                          
+                                <p class="">
+                                    You can’t change the past, but you can ruin the present by worrying about the future
+                                </p>
+                                
+         
+
+                        </div>*@
+                    </div>
+                    <div class="col-sm-8 text wow fadeInLeft">
+
+                        <div class="description">
+                            <p class="medium-paragraph">
+                                @RenderBody()
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<div class="container-fluid">
+    
+</div>
+
+
+  
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 footer-copyright">
+                  
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

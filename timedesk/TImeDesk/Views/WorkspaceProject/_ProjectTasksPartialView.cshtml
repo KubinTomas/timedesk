@@ -1,0 +1,59 @@
+﻿@using TImeDesk.ViewModel
+@model ProjectTasksViewModel
+
+
+<div class="Header" data-id="@Model.Project.Id" id="ProjectIdHolder">
+    <div class="Title">@Model.Project.Name</div>
+</div>
+<div class="Body">
+    <div class="Body">
+        <div class="UserProjects">
+            <div class="CenterHeader">Project tasks</div>
+            <div class="Divider"></div>
+            <div class="AllUsers">
+                <table class="table dataTable  table-hover " id="ProjectTasksDetailTable">
+                    <thead class="">
+                        <tr>
+                            <th>Name</th>
+                            <th>Total time spent</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="ProjectBody">
+
+                        @foreach (var task in Model.TasksTimeSpent)
+                        {
+
+                        <tr>
+                            <td>@task.Task.Name <span class="Project__ColorHolder" style="background-color:@task.Task.ColorString;  "></span> </td>
+                            <td>@task.TotalTimeSpent </td>
+                        </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+
+
+        //Initialize data table
+        $('#ProjectTasksDetailTable').dataTable({
+
+
+        });
+    });
+
+</script>

@@ -1,0 +1,126 @@
+﻿@using System.Globalization
+@using Microsoft.AspNet.Identity
+@model TImeDesk.ViewModel.TimeEntryViewModel
+
+<div id="TimerWrapper">
+    <div id="TimeEntryPartial">
+        @Html.Partial("_TimeEntryPartialView")
+    </div>
+
+
+
+    <!-- Offset from timer -->
+    <div style="margin-top: 100px;"></div>
+
+    <!-- TimeEntries    -->
+    <div class="Timer__TimeEntries" id="TimeEntriesPartial">
+        @Html.Partial("_TimeEntriesPartialView")
+    </div>
+</div>
+
+
+<div class="loadMoreTimeEntriesContainer">
+    <div id="loadMoreTimeEntries">
+        Load More
+    </div>
+</div>
+
+
+@*@{
+    if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", }))
+        {
+            @Html.AntiForgeryToken()
+
+
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+
+        }
+    }
+}*@   
+@*<script type="text/javascript" src="@Url.Content("~/Scripts/External/projectDropDown.js")"></script>*@
+<script type="text/javascript" src="@Url.Content("~/Scripts/Timer/SwitchingTimerAndManual.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/underscore.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Timer/DataController.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Timer/DropDownController.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/Timer/LoadMoreTimeEntries.js")"></script>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/TimeEntry/DeleteUpdateController.js")"></script>
+
+
+<script type="text/javascript">
+
+    //Storing value if timer is set to manual or no
+    var AutomaticTimer = ('@Model.AutomaticTimer' === '@true');
+
+
+    //URLs with razor syntax
+
+
+    //URLs for Timer/DataController
+    var playImageUrl = '@Url.Content("~/Images/Timer/play.png")';
+    var stopImageUrl = '@Url.Content("~/Images/Timer/stop.png")';
+    var sendTimeDataUrl = '@Url.Action("StartTimer", "Timer")';
+    var timerPartialViewUrl = '@Url.Action("GetTimerPartialViewResult", "Timer")';
+    var timeEntriesPartialViewUrl = '@Url.Action("GetTimeEntriesPartialViewResult", "Timer")';
+    var updateEntryUrl = '@Url.Action("UpdateTimeEntry", "Timer")';
+    var deleteRunningEntryUrl = '@Url.Action("DeleteRunningEntry", "Timer")';
+
+    //URLs for TimeEntry/DeleteUpdateController
+    var deleteEntryUrl = '@Url.Action("DeleteEntry", "Timer")';
+
+    //URLs for SwitchingTimerAndManul
+    var manualTimerUrl = '@Url.Content("~/Images/Timer/tick_done.png")';
+    var changeTimerStatusUrl = '@Url.Action("ChangeTimerStatus", "Profile")';
+    var manualPartialViewUrl = '@Url.Action("GetManualControlPartialView", "Timer")';
+    var automaticPartialViewUrl = '@Url.Action("GetAutomaticControlPartialView", "Timer")';
+    var addTagToTimeEntryUrl = '@Url.Action("AddTagToTimeEntry", "Timer")';
+    var removeTagFromTimeEntryUrl = '@Url.Action("RemoveTagFromTimeEntry", "Timer")';
+
+    var addTimeEntry = '@Url.Action("AddTimeEntry", "Timer")';
+
+    //URLs for LoadMoreTimeEntries
+    var increaLoadedHistoryUrl = '@Url.Action("IncreaseLoadedHistory", "Timer")';
+    var dashboardUrl = '@Url.Action("Index", "Dashboard")';
+
+
+
+    //When user get focus on the page
+    window.addEventListener("focus", function (event) {
+        //console.log("Fcous");
+        //Load all new TimeEntries, when user come back to PAGE
+
+        //TODO WRITE function to check changes and update
+
+        $('#TimeEntriesPartial').load('@Url.Action("GetTimeEntriesPartialViewResult", "Timer")');
+    }, false);
+
+    var dropDownRefGlobal = null;
+
+    //When user loose focus on the page
+    window.addEventListener("blur", function(event) {
+
+        if (dropDownRefGlobal !== null)
+            updateTimeEntry(dropDownRefGlobal);
+
+    }, false);
+
+
+
+    //To see performance of loading
+    $(window).load(function () {
+        var timerStart = Date.now();
+
+    });
+
+    ////Check on another page if something has been changed, if yes update
+    //window.setInterval(function () {
+    //    //checkForChanges();
+    //}, 3000);
+
+
+    // Handle clicking on Create new (buttons) in dropdowns
+</script>

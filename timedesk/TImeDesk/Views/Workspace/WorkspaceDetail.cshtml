@@ -1,0 +1,69 @@
+﻿@using TImeDesk.ViewModel
+@model WorkspaceDetailViewModel
+
+
+
+
+
+<div class="Dashboard__Wrapper">
+    
+    <div class="HeaderWrapper" >
+        <div class="Title" data-id="@Model.WorkSpace.Id" id="WorkspaceMainSign">@Model.WorkSpace.Name</div>
+    </div>
+    <div class="NavigationBarWrapper" id="NavigationBarWrapper">
+      
+        @*  Workspace navigation menu *@
+        @Html.Partial("~/Views/WorkspaceNavbars/_wWorkspaceNavigationMenu.cshtml", Model.Role)
+    </div>
+    
+    <div class="ContentWrapper" id="ContentArea">
+        @Html.Partial("Components/Users/_UserSummaryPartialView", @Model)
+        
+  
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    //WorkspaceController
+    var UsersPartialViewUrl = "@Url.Action("GetUsersPartialView", "Workspace")";
+    var InvitePartialViewUrl = "@Url.Action("GetInvitePartialView", "Workspace")";
+    var ProjectsPartialViewUrl = "@Url.Action("GetProjectsPartialView", "Workspace")";
+    var PermissionsPartialViewUrl = "@Url.Action("GetUserPermissionsPartialView","Workspace")";
+    var SavePermissionsUrl = "@Url.Action("SavePermissions","Workspace")";
+    var ShowUserDetailUrl = "@Url.Action("UserDetailPartialView", "Workspace")";
+    var AddBillingToUserUrl =  "@Url.Action("AddBillingToUser","Workspace")";
+    var RemoveBillingFromUserUrl = "@Url.Action("RemoveBillingFromUser","Workspace")";
+    var RemoveUserFormWorkspaceUrl = "@Url.Action("RemoveUserFromWorkspace","Workspace")";
+  
+
+    //WorkspaceProjectController
+    var UsersProjectPartialViewUrl = "@Url.Action("GetUsersProjectPartialView", "WorkspaceProject")";
+    var ProjectDetailPartialViewUrl = "@Url.Action("GetProjectDetailPartialView", "WorkspaceProject")";
+    var ShowUsersToAddOnProjectPartialViewUrl = "@Url.Action("GetAddUsersToProjectPartialView", "WorkspaceProject")";
+
+    var AddUserToProjectUrl = "@Url.Action("AddUserToProject", "WorkspaceProject")";
+    var RemoveUserFromProjectUrl = "@Url.Action("RemoveUserFromProject", "WorkspaceProject")";
+
+    var CreateProjectUrl = "@Url.Action("GetCreateProjectViewResult","WorkspaceProject")";
+
+    var ProjectDetailStatisticPartialViewUrl = "@Url.Action("GetProjectStatisticPartialView","WorkspaceProject")";
+
+     var ProjectTaskPartialViewUrl = "@Url.Action("GetProjectTasksPartialView","WorkspaceProject")";
+
+    // WorkspaceNavbarsController
+    var WorkspaceNavbarPartialViewUrl = "@Url.Action("GetDashboardNavbarPartialViewResult", "WorkspaceNavbars")";
+    var ProjectNavbarPartialViewUrl = "@Url.Action("GetProjectNavbarPartialViewResult", "WorkspaceNavbars")";
+
+    // WorkspaceSettings
+    var WorkspaceSettingsPartialViewUrl = "@Url.Action("GetWorkspaceSettíngsPartialViewResult","WorkspaceSettings")";
+    var DeleteWorkspaceUrl = "@Url.Action("DeleteWorkspace","WorkspaceSettings")";
+
+    //WorkspaceStatistic
+    var StatisticPartialViewUrl = "@Url.Action("GetWorkspaceStatistic", "WorkspaceStatistic")";
+
+</script>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/WorkSpace/Controller.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/WorkSpace/WorkspaceSettings.js")"></script>

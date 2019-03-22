@@ -1,0 +1,15 @@
+﻿@using TImeDesk.ViewModel
+@model WorkspaceViewModel
+    
+
+<div class="Workspace__WorkspaceRow">
+    <div class="WorkSpace__IconNameWrapper">
+        <a style="color: inherit;" href="@Url.Action("WorkspaceDetail", "Workspace", new {id = Model.WorkSpace.Id})">
+        <span class="Icon fa fa-bars"></span>
+        <span class="Name">@Model.WorkSpace.Name</span>
+        </a>
+    </div>
+    <div class="WorkSpace__SettingsWrapper">
+        <span data-id="@Model.WorkSpace.Id" class="SwitchWorkSpace Icon @(Model.WorkSpace.Id == Model.currentWorkspaceId?"ActiveWorkspace fa fa-toggle-on" : "fa fa-toggle-off" ) "><i></i></span>
+    </div>
+</div>

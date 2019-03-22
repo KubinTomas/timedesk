@@ -1,0 +1,151 @@
+﻿.Workspace__Wrapper {
+  overflow: hidden;
+  width: 90%;
+  height: 100%;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.Workspace__Wrapper .Workspace__Header {
+  position: relative;
+  height: 100px;
+  width: 100%;
+}
+.Workspace__Wrapper .Workspace__Header .Workspace__Title {
+  font-size: 2.4em;
+  float: left;
+  font-weight: bold;
+}
+.Workspace__Wrapper .Workspace__Body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__Divider {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: #e3e3e3;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__WorkspacesWrapper {
+  position: relative;
+  min-height: 300px;
+  width: 100%;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__WorkspacesWrapper .Workspace__WorkspacesFilter {
+  width: 100%;
+  height: 40px;
+  line-height: 50px;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__WorkspacesWrapper .Workspace__WorkspacesFilter .Workspace__WorkspacesTitle {
+  margin-left: 25px;
+  position: relative;
+  float: left;
+  font-size: 1.4em;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__WorkspacesWrapper .Workspace__WorkspacesFilter .Workspace__WorkspacesFilterContainer {
+  float: right;
+  width: 300px;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__WorkspacesWrapper .Workspace__WorkspacesFilter .Workspace__WorkspacesFilterContainer .Workspace__FilterInput {
+  background-image: url(../Images/Timer/search-icon-hi.png);
+  background-size: 20px 20px;
+  background-position: 10px 6px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 35px;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__WorkspacesWrapper .Workspace__WorkspaceRow {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__WorkspacesWrapper .Workspace__WorkspaceRow .WorkSpace__IconNameWrapper {
+  margin-left: 25px;
+  height: 100%;
+  min-width: 100px;
+  float: left;
+  cursor: pointer;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__WorkspacesWrapper .Workspace__WorkspaceRow .WorkSpace__IconNameWrapper .Icon {
+  margin-top: 10px;
+  font-size: 2em;
+  width: 40px;
+  height: 40px;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__WorkspacesWrapper .Workspace__WorkspaceRow .WorkSpace__IconNameWrapper .Name {
+  font-size: 1.5em;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__WorkspacesWrapper .Workspace__WorkspaceRow .WorkSpace__SettingsWrapper {
+  height: 100%;
+  min-width: 50px;
+  float: right;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__WorkspacesWrapper .Workspace__WorkspaceRow .WorkSpace__SettingsWrapper .ActiveWorkspace {
+  color: greenyellow !important;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__WorkspacesWrapper .Workspace__WorkspaceRow .WorkSpace__SettingsWrapper .Icon {
+  margin-top: 10px;
+  font-size: 2em;
+  width: 40px;
+  height: 40px;
+  color: #b5b5b5;
+  cursor: pointer;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__InvitationsWrapper {
+  margin-top: 30px;
+  position: relative;
+  min-height: 250px;
+  width: 100%;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__InvitationsWrapper .Header {
+  width: 100%;
+  height: 40px;
+  line-height: 50px;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__InvitationsWrapper .Header .Title {
+  margin-left: 25px;
+  position: relative;
+  float: left;
+  font-size: 1.4em;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__InvitationsWrapper .InvitationWrapper {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__InvitationsWrapper .InvitationWrapper .IconNameWrapper {
+  margin-left: 25px;
+  height: 100%;
+  min-width: 100px;
+  float: left;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__InvitationsWrapper .InvitationWrapper .IconNameWrapper .Icon {
+  margin-top: 10px;
+  font-size: 2em;
+  width: 40px;
+  height: 40px;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__InvitationsWrapper .InvitationWrapper .IconNameWrapper .Name {
+  font-size: 1.5em;
+}
+.Workspace__Wrapper .Workspace__Body .Workspace__InvitationsWrapper .InvitationWrapper .ActionWrapper {
+  float: right;
+  min-height: 20px;
+  margin: 0 auto;
+  min-width: 50px;
+  margin-right: 10px;
+  margin-top: 7.7px;
+}

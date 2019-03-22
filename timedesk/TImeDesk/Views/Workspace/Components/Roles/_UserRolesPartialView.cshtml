@@ -1,0 +1,58 @@
+﻿@model TImeDesk.ViewModel.Workspace.Permissions.WorkspaceUserPermissions
+
+<div class="Header">
+    <div class="Title">Manage permissions</div>
+</div>
+<div class="Body">
+    <table class="table dataTable  table-hover " id="PermissionTable">
+        <thead class="">
+            <tr>
+                <th>Name</th>
+                <th>Roles</th>
+                <th>Projects</th>
+                <th>Budget</th>
+                <th>Statistic</th>
+                <th>Settings</th>
+                <th>Manage users</th>
+                <th style="width: 50px;">Save</th>
+            </tr>
+        </thead>
+        <tbody id="ProjectBody">
+
+            @foreach (var user in Model.UserWorkspaces)
+            {
+                <tr>                
+                            <td>@user.ApplicationUser.UserName</td>
+                            <td>@Html.CheckBoxFor(c => user.UserWorkspaceRoles.CanManageRoles, new {value = "CanManageRoles" })</td>
+                            <td>@Html.CheckBoxFor(c => user.UserWorkspaceRoles.CanManageProjects, new { value = "CanManageProjects" }) </td>
+                            <td>@Html.CheckBoxFor(c => user.UserWorkspaceRoles.CanManageBudget, new { value = "CanManageBudget" }) </td>
+                            <td>@Html.CheckBoxFor(c => user.UserWorkspaceRoles.CanManageStatistic, new { value = "CanManageStatistic" }) </td>
+                            <td>@Html.CheckBoxFor(c => user.UserWorkspaceRoles.CanManageSettings, new { value = "CanManageSettings" }) </td>
+                            <td>@Html.CheckBoxFor(c => user.UserWorkspaceRoles.CanManageUsers, new { value = "CanManageUsers" } ) </td>
+                            <td><button user-id="@user.ApplicationUser.Id" type ="submit" class="btn-link savePermissions" style="margin-left: 35%;"><i class="fa fa-save" style="color: #B6B6B6;" aria-hidden="true"></i></button></td>           
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript" src="@Url.Content("~/Scripts/spectrum.js")"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        //Initialize data table
+        $('#PermissionTable').dataTable({
+            //"bInfo": false,
+            //"order": [[1, "desc"]],
+            //"columnDefs": [ {
+            //    "targets": [6,7],
+            //    "orderable": false
+            //} ]
+
+        });
+    });
+
+</script>

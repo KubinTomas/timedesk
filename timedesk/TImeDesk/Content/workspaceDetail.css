@@ -1,0 +1,504 @@
+﻿.Dashboard__Wrapper {
+  overflow: hidden;
+  width: 90%;
+  height: 100%;
+  background-color: #f6f6f6;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.Dashboard__Wrapper .HeaderWrapper {
+  position: relative;
+  width: 100%;
+  height: 100px;
+}
+.Dashboard__Wrapper .HeaderWrapper .Title {
+  position: relative;
+  font-size: 3.5em;
+  float: left;
+  font-weight: bold;
+}
+.Dashboard__Wrapper .NavigationBarWrapper {
+  position: relative;
+  width: 100%;
+  height: 100px;
+}
+.Dashboard__Wrapper .NavigationBarWrapper .Wrapper {
+  width: 100%;
+  height: 85px;
+  background-color: #f6f6f6;
+  display: flex;
+  margin-top: 25px;
+}
+.Dashboard__Wrapper .NavigationBarWrapper .Wrapper .NoPermission {
+  opacity: 0.6;
+  cursor: no-drop;
+}
+.Dashboard__Wrapper .NavigationBarWrapper .Wrapper > div {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  margin: 0 5px 0 5px;
+  text-align: center;
+  font-size: 1em;
+  cursor: pointer;
+}
+.Dashboard__Wrapper .NavigationBarWrapper .Wrapper > div:first-child {
+  margin: 0;
+}
+.Dashboard__Wrapper .NavigationBarWrapper .Wrapper > div .ItemWrapper {
+  height: 100%;
+  width: 100%;
+  font-size: 1.2em;
+}
+.Dashboard__Wrapper .NavigationBarWrapper .Wrapper > div .ItemWrapper .Icon {
+  height: 100%;
+  width: 50%;
+  float: left;
+  font-size: 2em;
+  line-height: 85px;
+}
+.Dashboard__Wrapper .NavigationBarWrapper .Wrapper > div .ItemWrapper .TextToIcon {
+  height: 100%;
+  width: 50%;
+  float: left;
+  display: block;
+  margin: - 10px;
+  word-wrap: break-word;
+}
+.Dashboard__Wrapper .NavigationBarWrapper .Wrapper > div .ItemWrapper .TextToIcon ul {
+  list-style-type: none;
+  float: right;
+  padding: 20px 5px 0 0;
+  word-wrap: break-word;
+  max-width: 100%;
+  max-height: 85px;
+}
+.Dashboard__Wrapper .NavigationBarWrapper .Wrapper > div .ItemWrapper .TextToIcon ul li {
+  text-align: right;
+  font-size: 0.6em;
+  color: #B6B6B6;
+  word-wrap: break-word;
+}
+.Dashboard__Wrapper .NavigationBarWrapper .Wrapper > div .ItemWrapper .TextToIcon ul li strong {
+  word-wrap: break-word;
+  font-size: calc(1vw);
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.Dashboard__Wrapper .NavigationBarWrapper .Icon:hover {
+  transform: scale(1.1);
+}
+.Dashboard__Wrapper .ContentWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  margin-top: 50px;
+}
+.Dashboard__Wrapper .ContentWrapper .Header {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  font-size: 2.5em;
+  line-height: 50px;
+  text-align: center;
+}
+.Dashboard__Wrapper .ContentWrapper .Header .Title {
+  position: relative;
+  float: left;
+  font-weight: bold;
+}
+.Dashboard__Wrapper .ContentWrapper .Header .NoPermission {
+  opacity: 0.6;
+  cursor: no-drop;
+  float: right;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+.Dashboard__Wrapper .ContentWrapper .Header .InviteContainer {
+  float: right;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+.Dashboard__Wrapper .ContentWrapper .Header .LeaveWorkspace {
+  margin-top: 5px;
+  float: right;
+}
+.Dashboard__Wrapper .ContentWrapper .Header .LeaveWorkspaceBtn {
+  margin-top: 5px;
+  float: right;
+}
+.Dashboard__Wrapper .ContentWrapper .Body {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  margin-top: 50px;
+  /* Manage user billings */
+  /* User options */
+}
+.Dashboard__Wrapper .ContentWrapper .Body .NameDivider {
+  width: 100%;
+  height: 50px;
+  margin: 20px 0 20px 0;
+  line-height: 50px;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .BillingsWrapper {
+  width: 800px;
+  background-color: #f6f6f6;
+  display: flex;
+  margin: auto;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .BillingsWrapper .Header {
+  width: 800px;
+  position: absolute;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .BillingsWrapper .Header .LeftHeader {
+  width: 390px;
+  float: left;
+  height: 100%;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .BillingsWrapper .Header .RightHeader {
+  width: 390px;
+  margin-left: 20px;
+  height: 100%;
+  float: right;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .BillingsWrapper .AssignedCurrency {
+  width: 390px;
+  float: left;
+  flex: 1;
+  border: solid 0.5px;
+  padding: 1em;
+  background-color: white;
+  margin-top: 50px;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .BillingsWrapper .AssignedCurrency .ItemWrapper {
+  color: #56cb0f;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .BillingsWrapper .AvailableCurrency {
+  min-height: 200px;
+  width: 390px;
+  margin-left: 20px;
+  float: right;
+  flex: 1;
+  border: solid 0.5px;
+  padding: 1em;
+  background-color: white;
+  margin-top: 50px;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .BillingsWrapper .ItemWrapper {
+  position: relative;
+  display: inline-block;
+  margin: 5px 5px 1px 1px;
+  border-radius: 10px;
+  color: #2B2B2B;
+  background: #f4f4f4;
+  background-clip: padding-box;
+  white-space: nowrap;
+  padding: 6px 8px;
+  font-size: 0.9em !important;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .KickUserOutOfWorkspaceBtn {
+  margin: 0 auto;
+  width: 100px;
+  height: 40px;
+  color: #ffffff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 40px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .Workspace__DetailWrapper {
+  width: 300px;
+  display: grid;
+  font-size: 1.3em;
+  letter-spacing: 1px;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .Workspace__StatisticProjectWrapper {
+  width: 600px;
+  display: grid;
+  font-size: 1.3em;
+  letter-spacing: 1px;
+  margin: 0 auto;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .ProjectStatisticBarWrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .ProjectStatisticBarWrapper .ProgressBar {
+  height: 40px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.Dashboard__Wrapper .ContentWrapper .Body .ProjectStatisticBarWrapper .BarNameDivider {
+  width: 100%;
+  height: 50px;
+  margin: 20px 0 20px 0;
+  line-height: 50px;
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .ProjectStatisticBarWrapper .BarShowValue {
+  width: 100%;
+  height: 20px;
+  margin: -30px 0 10px 0;
+  line-height: 20px;
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: lighter;
+  font-style: italic;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #f6f6f6;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper {
+  width: 100%;
+  height: 100%;
+  background-color: #f6f6f6;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .FilterMenu {
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  position: relative;
+  line-height: 80px;
+  display: flex;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .FilterMenu .FilterDropDown {
+  background-color: white;
+  border: none;
+  max-width: 200px;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+  padding: 12px 16px;
+  z-index: 1;
+  margin-left: 15px !important;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .FilterMenu .FilterButton {
+  margin-left: 20px !important;
+  color: #ffffff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  border: none;
+  font-size: 1.3em;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+  padding: 12px 16px;
+  z-index: 1;
+  cursor: pointer;
+  margin: 0 auto;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .FilterMenu .Title {
+  font-size: 2em;
+  float: left;
+  margin-left: 5px;
+  font-weight: bold;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .FilterMenu .DatePicker {
+  position: relative;
+  float: left;
+  font-size: 1.2em;
+  margin-left: 20px !important;
+  overflow: hidden;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .FilterMenu .DatePicker .Picker {
+  background: white;
+  cursor: pointer;
+  width: 100%;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .SummaryWrapper {
+  width: 100%;
+  height: 85px;
+  background-color: #f6f6f6;
+  display: flex;
+  margin-top: 25px;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .SummaryWrapper > div {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  margin: 0 5px 0 5px;
+  text-align: center;
+  font-size: 1em;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .SummaryWrapper > div .ItemWrapper {
+  height: 100%;
+  width: 100%;
+  font-size: 1.2em;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .SummaryWrapper > div .ItemWrapper .Icon {
+  height: 100%;
+  width: 35%;
+  float: left;
+  font-size: 2em;
+  line-height: 85px;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .SummaryWrapper > div .ItemWrapper .TextToIcon {
+  height: 100%;
+  width: 65%;
+  float: left;
+  display: block;
+  margin: - 10px;
+  word-wrap: break-word;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .SummaryWrapper > div .ItemWrapper .TextToIcon ul {
+  list-style-type: none;
+  float: right;
+  padding: 10px 5px 0 0;
+  word-wrap: break-word;
+  max-width: 100%;
+  max-height: 85px;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .SummaryWrapper > div .ItemWrapper .TextToIcon ul li {
+  text-align: right;
+  font-size: 0.8em;
+  color: #B6B6B6;
+  word-wrap: break-word;
+  /*width: 100%;
+
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;*/
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .SummaryWrapper > div .ItemWrapper .TextToIcon ul li strong {
+  word-wrap: break-word;
+  font-size: calc(1.2vw);
+  text-overflow: ellipsis;
+  /* Required for text-overflow to do anything */
+  overflow: hidden;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .Icon:hover {
+  transform: scale(1.1);
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .MainChartWrapper {
+  width: 100%;
+  margin-top: 25px;
+  height: 500px;
+  background-color: #f6f6f6;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .SubChartWrapper {
+  width: 100%;
+  margin-top: 25px;
+  height: 400px;
+  background-color: #f6f6f6;
+  display: flex;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .SubChartWrapper > div {
+  background-color: white;
+  width: 50px;
+  height: 100%;
+  margin: 0 5px 0 5px;
+  text-align: center;
+  font-size: 1em;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .Projects {
+  width: 100%;
+  height: 100%;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .Projects .ProjectTitleWrapper {
+  width: 100%;
+  height: 10%;
+  background-color: white;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .Projects .ProjectTitleWrapper .Title {
+  font-size: calc(1.8vw);
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .Projects .ProjectsWrapper {
+  width: 100%;
+  height: 90%;
+  background-color: white;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .Projects .ProjectsWrapper .Content {
+  float: left;
+  padding: 15px;
+  font-size: calc(0.9vw);
+  text-align: left;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .InnerWrapper .Projects .ProjectsWrapper .Content ul {
+  list-style-type: none;
+  padding: 0;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .Header {
+  margin-top: 25px;
+  font-size: 3em;
+  text-align: center;
+  position: relative;
+  font-weight: bold;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .StatisticWrapper .Divider {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: #e3e3e3;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .InviteBody {
+  position: relative;
+  min-height: 50px;
+  width: 350px;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .UserProjects .CenterHeader {
+  font-size: 1.5em;
+  position: relative;
+  font-weight: bold;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .UserProjects .Divider {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: #e3e3e3;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .AllUsers {
+  margin-top: 50px;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .AllUsers .CenterHeader {
+  font-size: 1.5em;
+  position: relative;
+  font-weight: bold;
+}
+.Dashboard__Wrapper .ContentWrapper .Body .AllUsers .Divider {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: #e3e3e3;
+}

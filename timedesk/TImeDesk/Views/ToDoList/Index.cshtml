@@ -1,0 +1,34 @@
+﻿@using System.Globalization
+@using Microsoft.AspNet.Identity
+@using TImeDesk.Models.Database
+@model TImeDesk.ViewModel.NotesViewModel
+
+<div class="ToDoList__Wrapper">
+
+    @foreach (var note in Model.PrivateNotes)
+    {
+        Model.Note = note;
+        @Html.Partial("~/Views/ToDoList/Components/_NotePartialView.cshtml", Model)
+    }
+
+
+
+
+    @*Add Note*@
+    <div class="ToDoList__StickNoteWrapper" id="AddNoteArea" note-type="private">
+        <div class="ToDoList__AddStickNote">
+            <span class="ToDoList__AddNoteIcon"><i class="fa fa-plus-circle"></i></span>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script>
+    var noteUrl = '@Url.Action("CreateNewNote", "ToDoList")';
+    var deleteNoteUrl = '@Url.Action("DeleteNote", "ToDoList")';
+    var updateNoteUrl = '@Url.Action("UpdateNote", "ToDoList")';
+    var changeNoteColorUrl = '@Url.Action("ChangeNoteColor", "ToDoList")';
+</script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/ToDoList/CRUDNoteController.js")"></script>

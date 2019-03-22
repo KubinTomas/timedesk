@@ -1,0 +1,119 @@
+﻿/*
+    Properties set up
+*/
+:root {
+    --timer-icon-color: #747474;
+    --timer-font-size: 1em;
+}
+
+/* Changing only icon colors */
+/* Sider bar */
+#SiderBar__IconSetUp {
+    font-size: var(--timer-font-size);
+    color: var(--timer-icon-color);
+}
+#SiderBar__HeaderLogo {
+    font-size: 30px;
+}
+
+
+/* Timer */
+#Timer__selectProject {
+    font-size: var(--timer-font-size);
+    color: var(--timer-icon-color);
+}
+
+#Timer__selectTask {
+    font-size: var(--timer-font-size);
+    color: var(--timer-icon-color);
+}
+
+#Timer__selectBilling {
+    font-size: var(--timer-font-size);
+    color: var(--timer-icon-color);
+}
+
+#Timer__selectTags {
+    font-size: var(--timer-font-size);
+    color: var(--timer-icon-color);
+}
+
+#Timer__selectBillings {
+    font-size: var(--timer-font-size);
+    color: var(--timer-icon-color);
+}
+
+#Timer__switchToTimer {
+    font-size: 17px;
+    color: var(--timer-icon-color);
+}
+
+#Timer__switchToInputs {
+    font-size: 17px;
+    color: var(--timer-icon-color);
+}
+
+#Timer__deleteRunningEntry {
+    font-size: var(--timer-font-size);
+    color: var(--timer-icon-color);
+}
+#Timer__repeatEntry {
+    font-size: var(--timer-font-size);
+    color: var(--timer-icon-color);
+}
+
+
+
+.C1 {
+    background-color: #5ccdde;
+}
+
+.C2 {
+    background-color: #afde5c;
+}
+
+.C3 {
+    background-color: #deb25c;
+}
+
+.C4 {
+    background-color: #de815c
+}
+
+.C5 {
+    background-color: #FFA85E;
+}
+
+.C6 {
+    background-color: #CA58FC;
+}
+.C7 {
+    background-color: #FF5DC3 !important;
+}
+
+.C1t {
+    color: #5ccdde !important;
+}
+
+.C2t {
+    color: #afde5c !important;
+}
+
+.C3t {
+    color: #deb25c !important;
+}
+
+.C4t {
+    color: #de815c !important;
+}
+
+.C5t {
+    color: #FFA85E !important;
+}
+
+.C6t {
+    color: #CA58FC !important;
+}
+.C7t {
+    color: #FF5DC3 !important;
+}

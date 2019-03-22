@@ -1,0 +1,287 @@
+﻿@using Microsoft.AspNet.Identity
+@using TImeDesk.Models.Database
+@model TImeDesk.ViewModel.TimeEntryViewModel
+
+
+<div class="nav-wrapper">
+    <div class="TimerForm__flex-container TimeEntry__ItemWrapper" data-id="@Model.Id">
+        <div style="flex-grow: 30">
+
+            <input type="text" class="TimeForm__timeEntryDescription" placeholder="What are you working on?" id="TimeForm__timeEntryDescriptionId" value="@Model.Description" onfocusout="somethingHasChanged()" />
+
+        </div>
+        <div class="TimerForm__flex-div TimeForm__PointerCursor CustomDropDown" style="flex-grow: 0.8" id="Project__OpenFolderBox">
+
+            <div class="Project__CustomDropDown">
+                <span>
+                    @(Model.ProjectId != null ? @Html.Raw("<span class='Project__SelectedProject placeToReplace' id ='projectDropDownIcon'  ><i id='Timer__selectProject' > <div class='Project__ColorHolder' style='background-color:" + @Model.Project.ColorString + "; '></div><span class='Project__Name Project' data-id='" + @Model.Project.Id + " ' style='color:" + @Model.Project.ColorString + "; '>" + @Model.Project.Name + "</span>  </i></span> ") : Html.Raw("<span class = 'placeToReplace' id='projectDropDownIcon' > <span> <i class='fa fa-folder-open' id ='Timer__selectProject'  ></span></i></span> "))
+                </span>
+                <div id="Project__DropDown" class="Project__DropDownContent">
+                    <div class="Project__filterContainer">
+                        <input type="text" placeholder="Find project.." id="PrFilterInput" class="FilterInput" onkeyup="filterProjectFunction()">
+                    </div>
+                    <div class="Project__projectsContainer" id="Projects">
+
+                        <div class="Project__ItemWrapper"><a class="Project__itemContainer"><div class="" style="background-color:transparent;"></div><span class=" Project" data-id="0">No Project</span></a></div>
+                        @*<div class="Project__ItemWrapper"> <a id="0" class="Project__itemContainer">No Project</a></div>*@
+
+                        @foreach (var project in Model.Projects.Where(c => c.StatusId == Status.Active))
+                    {
+                        <div class="Project__ItemWrapper"><a class="Project__itemContainer @((Model.ProjectId == project.Id)?  "SelectedItemInDropDown" : "")"><div class="Project__ColorHolder" style="background-color: @project.ColorString;"></div><span class="Project__Name Project" data-id="@project.Id" style="color: @project.ColorString">@project.Name</span></a></div>
+                }
+
+
+                    </div>
+                    <div class="Project__createProjectContainer">
+                        <span><i style="color: #56cb0f;" class="fa fa-plus"></i><span id="Project__NewProjectBtn">Create new project</span></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Task -->
+        <div class="TimerForm__flex-div TimeForm__PointerCursor CustomDropDown TaskMainContainer" style="flex-grow: 0.8" id="Task__OpenFolderBox">
+
+
+
+            <div class="Project__CustomDropDown">
+                <span>
+                    @(Model.ProjectTaskId != null ? @Html.Raw("<span class='Task__SelectedTask placeToReplace' id ='taskDropDownIcon' ><i id='Timer__selectTask' > <div class='Project__ColorHolder' style='background-color:" + @Model.ProjectTask.ColorString + ";'></div><span class='Project__Name Task' data-id='" + @Model.ProjectTask.Id + " ' style=' color:" + @Model.ProjectTask.ColorString + "; ' >" + @Model.ProjectTask.Name + "</span>  </i></span> ") : Html.Raw("<span class = 'placeToReplace' id='projectDropDownIcon' > <span> <i class='fa fa-tasks' id ='Timer__selectProject'  ></span></i></span> "))
+                </span>
+                <div id="Task__DropDown" class="Project__DropDownContent">
+                    <div class="Project__filterContainer">
+                        <input type="text" placeholder="Find task.." id="TsFilterInput" class="FilterInput" onkeyup="filterProjectFunction()">
+                    </div>
+                    <div class="Project__projectsContainer TasksContainer" id="Tasks">
+
+                        <div class="Project__ItemWrapper"><a class="Project__itemContainer"><div class="Project__ColorHolder" style="background-color:transparent;"></div><span class="Project__Name Task" data-id="0">No Task</span></a></div>
+
+
+                        @foreach (var task in Model.ProjectTasks.Where(c => c.StatusId == Status.Active))
+                        {
+                            <div class="Project__ItemWrapper" ><a class="Project__itemContainer  @((Model.ProjectTaskId == task.Id)?  "SelectedItemInDropDown" : "")"><div class="Project__ColorHolder" style="background-color: @task.ColorString;"></div><span class="Project__Name Task" data-id="@task.Id" style="color: @task.ColorString;" >@task.Name </span></a></div>
+                        }
+
+                    </div>
+                    <div class="Project__createProjectContainer">
+                        <span><i style="color: #56cb0f;" class="fa fa-plus"></i><span id="Project__NewProjectBtn">Create new task</span></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Billings -->
+        <div class="TimerForm__flex-div TimeForm__PointerCursor CustomDropDown" style="flex-grow: 0.8" id="Billings__OpenDropDown">
+
+
+            <div id="Billings__OpenDropDown">
+
+                <div class="Project__CustomDropDown">
+                    <span>
+                       
+                        @(Model.BillingsId != null ? @Html.Raw("<span class='Task__SelectedTask placeToReplace' id ='taskDropDownIcon' ><i id='Timer__selectBilling' > <div class='Project__NoColor'></div><span class='Project__Name Billing' data-id='" + @Model.BillingsId + " ' >" + @Model.AllBillingses.FirstOrDefault(c => c.Id == Model.BillingsId).HourRate + " " + @Model.Currency.FirstOrDefault(c => c.Id == Model.AllBillingses.FirstOrDefault(b => b.Id == Model.BillingsId).CurrencyId).Symbol + "</span>  </i></span> ") : Html.Raw(" <span class = 'placeToReplace'id ='taskDropDownIcon'><span><i class='fa fa-dollar' id='Timer__selectBilling'></i></span></span>"))
+                    </span>
+                    <div id="Task__DropDown" class="Project__DropDownContent">
+                        <div class="Project__filterContainer">
+                            <input type="text" placeholder="Find billing.." id="TsFilterInput" class="FilterInput" onkeyup="filterProjectFunction()">
+                        </div>
+                        <div class="Project__projectsContainer BillingsContainer" id="Billings">
+
+
+                            <div class="Project__ItemWrapper"><a class="Project__itemContainer"><div class="Project__NoColor" style="background-color:transparent;"></div><span class="Project__Name Billing" data-id="0">No Billing</span></a></div>
+
+
+                            @foreach (var billing in Model.AssignedBillingses)
+                            {
+                                <div class="Project__ItemWrapper"><a class="Project__itemContainer  @((Model.BillingsId == billing.Id)?  "SelectedItemInDropDown" : "")"><div class="Project__NoColor"></div><span class="Project__Name Billing" data-id="@billing.Id">@billing.HourRate  @Model.Currency.FirstOrDefault(c => c.Id == billing.CurrencyId).Symbol</span></a></div>
+                            }
+
+                        </div>
+                        <div class="Project__createProjectContainer">
+                            <span><i style="color: #56cb0f;" class="fa fa-plus"></i><span id="Project__NewProjectBtn">Create new billing</span></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="TimerForm__flex-div TimeForm__PointerCursor CustomDropDown" style="flex-grow: 0.8" id="Tags__OpenDropDown">
+
+
+            <div id="Tags__OpenDropDown">
+
+                <div class="Project__CustomDropDown">
+                    <span><i class="fa fa-tags" id="Timer__selectTags"></i></span>
+                    <div id="Task__DropDown" class="Project__DropDownContent">
+                        <div class="Project__filterContainer">
+                            <input type="text" placeholder="Find tag.." id="TsFilterInput" class="FilterInput" onkeyup="filterProjectFunction()">
+                        </div>
+
+                        <div class="Project__projectsContainer TagContainer" id="Tags">
+
+                            <span class="SelectedTagHeader">Selected tags</span>
+                            
+                            <div class="SelectedTagsContainer" id ="SelectedTagIdContainer">
+
+                                @foreach (var tag in Model.SelectedTags)
+                                {
+                                    <div class="ItemTag" data-id="@tag.Tag.Id">@tag.Tag.Name</div>
+                                }
+                            </div>
+                            
+                            <span class="SelectedTagHeader">Available tags</span>
+
+                            <div class="AvailableTagsContainer">
+                            @foreach (var tag in Model.AllTags.Where(c => c.WorkSpaceId == Model.WorkspaceId && !Model.SelectedTags.Any(p => p.TagId == c.Id)))
+                            {
+                                <div class="ItemTag" data-id="@tag.Id">@tag.Name</div>
+                            }
+
+                            </div>
+
+                        </div>
+                       
+
+                        <div class="Project__createProjectContainer">
+                            <span><i style="color: #56cb0f;" class="fa fa-plus"></i><span id="Project__NewProjectBtn">Create new tag</span></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+      
+        <div id="ManualAutomaticTimer" style="margin: auto;">
+            @{
+                if (!Model.IsFinished)
+                {
+                    @Html.Partial("Components/_AutomaticTimerPartialView") 
+                }else
+                {
+                    if (Model.AutomaticTimer)
+                    {
+                        @Html.Partial("Components/_AutomaticTimerPartialView")
+                    }
+                    else
+                    {
+                        @Html.Partial("Components/_ManualTimerPartialView")
+                    }
+
+                }
+            }
+           
+        </div>
+
+            <div class="TimerForm__flex-div TimeForm__PointerCursor" style="flex-grow: 1" id="DisplayTime">
+          
+                @((Model.IsFinished)? @Html.Partial("Components/_ManualAutomatPartialView") : @Html.Partial("Components/_DeleteRunningEntryPartialView"))
+             
+            </div>
+        </div>
+</div>
+
+
+<script type="text/javascript">
+
+    function pad(num) {
+        return ("0"+num).slice(-2);
+    }
+    function startTime() {
+     
+        //If timer is set to Manual prevend for showing time
+        if ($("#Timer__OnOff").attr("value") === "ManualTimer")
+            return;
+        // Check is TimeEntry is Running
+        if ('@(Model.IsFinished)' === '@false') {
+
+
+            var today = new Date();
+
+            var convertTime = function(input, separator) {
+                var pad = function(input) { return input < 10 ? "0" + input : input; };
+                return [
+                    pad(Math.floor(input / 3600)),
+                    pad(Math.floor(input % 3600 / 60)),
+                    pad(Math.floor(input % 60)),
+                ].join(typeof separator !== 'undefined' ? separator : ':');
+            }
+            
+            var startedDate = new Date('@Model.StartedDate.ToString("yyyy-MM-ddTHH:mm:ss")');
+
+
+            var dif = new Date(today.getTime() - startedDate.getTime());
+            var time = convertTime(dif.getTime() / 1000, ':');
+            var newTime = time;
+
+
+            if (newTime.substring(0, 1) == "0") {
+                newTime = newTime.replace('0', '');
+            }
+
+
+            document.getElementById('Timer__Time').innerHTML = newTime;
+
+        } else {
+            document.getElementById('Timer__Time').innerHTML = "0:00:00";
+        }
+
+        t = setTimeout(function () {
+            startTime();
+        }, 1000);
+    }
+
+    startTime();
+ 
+  
+    function checkForChanges() {
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetTimeEntryJsonModel", "Timer")',
+            contentType: 'application/json',
+            success: function (data) {
+
+
+                var description = '@Model.Description';
+                var projectId = '@Model.ProjectId';
+                var taskId = '@Model.ProjectTaskId';
+                var billingsId = '@Model.BillingsId';
+
+                // If they are no data, json return empty string ""
+
+                if (description.length == 0)
+                    description = null;
+
+                if (projectId.length == 0)
+                    projectId = null;
+
+                if (taskId.length == 0)
+                    taskId = null;
+
+                if (billingsId.length == 0)
+                    billingsId = null;
+
+
+                if ('@Model.Id' != data["Id"] ||
+                    description != data["Description"] && $('#Timer__OnOff').attr("value") == "on" ||
+                    projectId != data["ProjectId"] && $('#Timer__OnOff').attr("value") == "on" ||
+                    taskId != data["ProjectTaskId"] && $('#Timer__OnOff').attr("value") == "on" ||
+                    billingsId != data["BillingsId"] && $('#Timer__OnOff').attr("value") == "on") {
+
+                    $('#TimeEntryPartial').load('@Url.Action("GetTimerPartialViewResult", "Timer")',
+                        function() {
+                            var projectId = (typeof ($('#projectDropDownIcon .Task').attr("data-id")) == 'undefined') ? "0" : $('#projectDropDownIcon .Task').attr("data-id");
+                            fillTaskData(projectId);
+                        });
+                }
+
+
+
+            }
+        });
+    }
+
+
+
+</script>

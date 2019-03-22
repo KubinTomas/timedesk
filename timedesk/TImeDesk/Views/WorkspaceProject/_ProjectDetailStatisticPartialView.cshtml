@@ -1,0 +1,135 @@
+﻿@using TImeDesk.ViewModel
+@model ProjectWorkspaceDetailViewModel
+
+<div class="Header" data-id="@Model.Project.Id" id="ProjectIdHolder">
+    <div class="Title">@Model.Project.Name</div>
+
+</div>
+<div class="Body">
+    
+    <div class="NameDivider">Details</div>
+    <div class="Workspace__StatisticProjectWrapper">
+        <table>
+            <thead>
+            <tr></tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td><span>Name:</span></td>
+                <td><strong>@Model.Project.Name</strong></td>
+            </tr>
+
+            <tr>
+                <td><span>Created:</span></td>
+                <td><strong>@Model.Project.Created.ToShortDateString()</strong></td>
+            </tr>
+            <tr>
+                <td><span>Deadline:</span></td>
+                <td><strong id="DetailsCurrencyName">@(Model.Project.DeadLine == null ? "Is not set" : Model.Project.DeadLine.Value.ToShortDateString())</strong></td>
+            </tr>
+            <tr>
+                <td><span>Hour limit:</span></td>
+                <td><strong>@(Model.Project.HourLimit == null ? "Is not set": Model.Project.HourLimit.ToString())</strong></td>
+            </tr>
+            <tr>
+                <td><span>Total worked time [H]:</span></td>
+                <td><strong>@Model.TotalWorkedTime</strong></td>
+            </tr>
+            <tr>
+                <td><span>Project client: </span></td>
+                <td><strong>@(Model.Project.ClientId == null ? "Is not set" : Model.Project.Client.Name)</strong></td>
+            </tr>
+            <tr>
+                <td><span>Budget [@Model.WorkspaceCurrencyName]:</span></td>
+                <td><strong>@(Model.Project.Budget == null ? "Is not set" : Model.Project.Budget.ToString())</strong></td>
+            </tr>
+            <tr>
+                <td><span>Money spent [@Model.WorkspaceCurrencyName]:</span></td>
+                <td><strong>@Model.Money</strong></td>
+            </tr>
+            <tr>
+                <td><span>Created by:</span></td>
+                <td><strong>@Model.Project.ApplicationUser.UserName</strong></td>
+            </tr>
+            <tr>
+                <td><span>Total assigned users:</span></td>
+                <td><strong>@Model.TotalAssignedUsers</strong></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <div class="NameDivider">Bars</div>
+    
+    <div class="ProjectStatisticBarWrapper" id="ProjectStatisticBarWrapper">
+
+
+        <div class="BarNameDivider">Deadline</div>
+        <div class="BarShowValue">(@Model.DeadlineProgressBarValue%)</div>
+
+        <div class="progress progress-striped " style="height: 50px;">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="@(Model.DeadlineProgressBarValue)" aria-valuemin="0" aria-valuemax="100" style="width: @(Model.DeadlineProgressBarValue)%"></div>
+        </div>
+
+        <div class="BarNameDivider">Hour limit</div>
+        <div class="BarShowValue">(@Model.HourLimitProgressBarValue%)</div>
+
+        <div class="progress progress-striped " style="height: 50px;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="@(Model.HourLimitProgressBarValue)" aria-valuemin="0" aria-valuemax="100" style="width: @(Model.HourLimitProgressBarValue)%"></div>
+        </div>
+
+        <div class="BarNameDivider">Budget</div>
+        <div class="BarShowValue">(@Model.BudgetProgressBarValue%)</div>
+
+        <div class="progress progress-striped " style="height: 50px;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="@(Model.BudgetProgressBarValue)" aria-valuemin="0" aria-valuemax="100" style="width: @(Model.BudgetProgressBarValue)%"></div>
+        </div>
+    </div>
+    
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        SetProgressBarType();
+    });
+
+    function SetProgressBarType() {
+
+        var barParent = $("#ProjectStatisticBarWrapper");
+
+        console.log(barParent);
+
+        barParent.find('.progress-bar').each(function () {
+
+            var bar = $(this);
+            var barParent = bar.parent();
+
+            var barValue = bar.attr("aria-valuenow");
+
+            if (barValue <= 40) {
+                barParent.addClass("active");
+                bar.addClass("progress-bar-success");
+            } else if (barValue <= 60) {
+                barParent.addClass("active");
+                bar.addClass("progress-bar-info");
+            } else if (barValue <= 80) {
+                barParent.addClass("active");
+                bar.addClass("progress-bar-warning");
+            } else if (barValue < 100) {
+                barParent.addClass("active");
+                bar.addClass("progress-bar-danger");
+            }else if (barValue >= 100) {
+                bar.css({ 'background-color': "#323232" });
+            }
+
+        });
+    }
+
+
+</script>

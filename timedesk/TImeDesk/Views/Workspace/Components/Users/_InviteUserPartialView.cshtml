@@ -1,0 +1,27 @@
+﻿@using TImeDesk.ViewModel
+@model WorkspaceDetailViewModel
+
+
+<div class="Header">
+    <div class="Title">Invite new user</div>
+</div>
+
+<div class="Body">
+    <div class="InviteBody">
+    @using (Ajax.BeginForm("InviteUser", "Workspace", new AjaxOptions { HttpMethod = "POST", OnSuccess = "InvitaionWasSend" }))
+    {
+        <div class="form-group">
+            @Html.Label("User code")
+            @Html.TextBoxFor(w => w.UserId, new {@class = "form-control", required = "required", placeholder="User code..", @Value = "" })
+        </div>
+        @Html.HiddenFor(c => c.WorkSpace.Id)
+    
+        <button type="submit" class="btn btn-success">Invite</button>
+    }
+    </div>
+</div>
+<script>
+    function InvitaionWasSend() {
+        GetUsersPartialView();    
+    }
+</script>

@@ -1,0 +1,46 @@
+﻿[
+  {
+    "outputFile": "Content/createworkspace.css",
+    "inputFile": "Content/createworkspace.less"
+  },
+  {
+    "outputFile": "Content/customElements.css",
+    "inputFile": "Content/customElements.less"
+  },
+  {
+    "outputFile": "Content/dashboard.css",
+    "inputFile": "Content/dashboard.less"
+  },
+  {
+    "outputFile": "Content/homepage.css",
+    "inputFile": "Content/homepage.less"
+  },
+  {
+    "outputFile": "Content/todolist.css",
+    "inputFile": "Content/todolist.less"
+  },
+  {
+    "outputFile": "Content/workspace.css",
+    "inputFile": "Content/workspace.less"
+  },
+  {
+    "outputFile": "Content/workspaceDetail.css",
+    "inputFile": "Content/workspaceDetail.less"
+  },
+  {
+    "outputFile": "Content/workspaceProjectDetail.css",
+    "inputFile": "Content/workspaceProjectDetail.less"
+  },
+  {
+    "outputFile": "Content/workspaceSettings.css",
+    "inputFile": "Content/workspaceSettings.less"
+  },
+  {
+    "outputFile": "Content/workspaceStatistic.css",
+    "inputFile": "Content/workspaceStatistic.less"
+  },
+  {
+    "outputFile": "Content/workspaceUserProfil.css",
+    "inputFile": "Content/workspaceUserProfil.less"
+  }
+]

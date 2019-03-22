@@ -1,0 +1,73 @@
+﻿
+@using TImeDesk.Models.Database
+@model TImeDesk.ViewModel.BillingCurrencyViewModel
+
+<table class="table " id="ProjectTable">
+    <thead>
+        <tr>
+            <th class="">
+                <input type="checkbox" class="select-all checkbox" name="select-all" />
+            </th>
+            <th>Billing</th>
+            <th>Hour rate</th>
+            <th>Currency</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="ProjectBody">
+
+        @foreach (var billing in Model.Billingses)
+        {
+            <tr>
+                <td class="">
+                    <input type="checkbox" class="select-item checkbox" name="select-item" value="1000" />
+                </td>
+                <td>@billing.Name </td>
+                <td>@billing.HourRate </td>
+                <td>@billing.Currency.Name</td>
+                <td>@billing.Status.Name</td>
+                <td><button data-customer-id="@billing.Id" class="btn-link js-delete"><i class="fa fa-trash" style="color: #B6B6B6;" aria-hidden="true"></i></button></td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //Initialize data table
+       $('#ProjectTable').dataTable({
+            //Remove paging
+            "paging": false,
+            //Remove info ("Showing x entries of ... )
+            "bInfo": false,
+            "order": [[1, "desc"]],
+            "columnDefs": [{
+                "targets": [0,5],
+                "orderable": false
+            }]
+        });
+
+        $('#ProjectTable').on("click", ".js-delete" ,function () {
+            var button = $(this);
+            //alert("Test");
+            $.ajax({
+                url: ('@Url.Action("DeleteBilling", "Billing")'),
+                data: "id=" + button.attr("data-customer-id"),
+                method: "POST",
+                success: function () {
+                   // Data table neaktualizuje data
+                  //  button.parents("tr").remove();
+                   // table.row(button.parents("tr")).remove().draw();
+                      $('#Project__List').load('@Url.Action("GetBillingsPartialViewResult", "Billing")');
+                }
+            });
+
+        });
+
+    });
+
+</script>

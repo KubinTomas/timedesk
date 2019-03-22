@@ -1,0 +1,11 @@
+﻿@model TImeDesk.Models.Database.UserWorkspace
+<div class="InvitationWrapper">
+    <div class="IconNameWrapper">
+        <span class="Icon fa fa-bars"></span>
+        <span class="Name">@Model.WorkSpace.Name</span>
+    </div>
+    <div class="ActionWrapper">
+        <div class="btn btn-success Invitation" data-id="@Model.Id" type="accept">Accept</div>
+        <div class="btn btn-danger Invitation" data-id="@Model.Id" type="decline">Decline</div>
+    </div>
+</div>

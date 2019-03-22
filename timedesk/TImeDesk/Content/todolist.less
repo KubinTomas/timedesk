@@ -1,0 +1,168 @@
+﻿.ToDoList__Wrapper {
+    overflow: hidden;
+    width: 90%;
+    height: 100%;
+    background-color: #f6f6f6;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+
+    .Header {
+        font-size: 3em;
+        text-align: center;
+        position: relative;
+        font-weight: bold;
+    }
+
+    .Divider {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        position: relative;
+        width: 100%;
+        height: 2px;
+        background-color: #e3e3e3;
+    }
+
+    .ToDoList__StickNoteWrapper {
+        position: relative;
+        float: left;
+        width: 320px;
+        height: 420px;
+        z-index: 2;
+        margin: 10px;
+        border-radius: 4px;
+
+        .ToDoList__ChangeColorWrapper {
+            position: relative;
+            width: 100%;
+            margin-top: 0px;
+            height: 0;
+            background-color: red;
+            border-radius: 4px;
+            z-index: 10;
+
+            .ToDoList__ColorWrapper {
+                position: relative;
+                margin: 0 auto;
+                margin-left: 5px;
+                margin-top: 10px;
+                display: inline-block;
+                height: 70%;
+                width: 17%;
+                border-radius: 100%;
+                background-color: forestgreen;
+                cursor: pointer;
+            }
+        }
+
+        .ToDoList__AddStickNote {
+            border-radius: 4px;
+            background-color: #F5F5F5;
+            border: solid #AAAAAA 2px;
+            box-shadow: 3px 5px #888888;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+
+            .ToDoList__AddNoteIcon {
+                margin: 0 auto;
+                font-size: 10em;
+                text-align: center;
+                display: block;
+                margin-top: 35%;
+                color: #323232;
+            }
+        }
+
+        .ToDoList__StickNote {
+            position: absolute;
+            top: 0;
+            border-radius: 4px;
+            box-shadow: 3px 5px #888888;
+            background-color: rgb(251, 194, 89);
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+
+
+
+            .ToDoList__StickNoteBody {
+                width: 100%;
+                height: 370px;
+                padding: 10px;
+                font-size: 1em;
+                margin-top: 50px;
+                background-color: inherit;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+                /*Styling scroll bar for text area*/
+                textarea::-webkit-scrollbar {
+                    width: 3px;
+                }
+
+                textarea::-webkit-scrollbar-track {
+                    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                }
+
+                textarea::-webkit-scrollbar-thumb {
+                    background-color: #7A7A7A;
+                    outline: 1px solid slategrey;
+                }
+
+                .ToDoList__TextArea {
+                    height: 100%;
+                    width: 100%;
+                    background-color: inherit;
+                    border-style: none;
+                    line-height: 1.7em;
+                    overflow: auto;
+                    outline: none;
+                    resize: none;
+                }
+            }
+
+            .ToDoList__StickNoteHeader {
+                position: absolute;
+                width: 100%;
+                height: 50px;
+                border-top-right-radius: 4px;
+                border-top-left-radius: 4px;
+                background-color: rgb(248, 167, 19);
+
+                .ToDoList__HeaderWrapper {
+                    position: absolute;
+                    display: inline-block;
+                    line-height: 35px;
+                    height: 100%;
+                    width: 100%;
+                    /*background-color: rgb(255, 255, 255);*/
+                    .ToDoList__HeaderIcons {
+                        color: #323232;
+                        font-size: 1.5em;
+                        padding: 10px;
+                        margin-right: 5px;
+                        float: right;
+                        cursor: pointer;
+                    }
+
+                    .ToDoList__HeaderTitle {
+                        font-weight: bold;
+                        color: #323232;
+                        line-height: 50px;
+                        margin-left: 10px;
+                        font-size: 1.5em;
+                        float: left;
+                        width: 100%;
+                        max-width: 200px;
+                        border: 0;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        background: inherit;
+                        display: block;
+                        height: 50px;
+                    }
+                }
+            }
+        }
+    }
+}

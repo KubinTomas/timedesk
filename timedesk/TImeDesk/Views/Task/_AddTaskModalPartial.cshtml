@@ -1,0 +1,123 @@
+﻿
+@model TImeDesk.ViewModel.TaskProjectViewModel
+
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/spectrum.js")"></script>
+
+<!-- Modal -->
+<div class="modal fade" id="taskModal" role="dialog" >
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title font-weight-bold">Create task</h4>
+            </div>
+            <div class="Project__ModalBody">
+
+                @using (Ajax.BeginForm("AddTask", "Task", new AjaxOptions { HttpMethod = "POST", OnSuccess = "UpdateTaskTable" }))
+                {
+                    <text>
+                        <div class="Project__ModalContainer">
+                            @Html.TextBoxFor(p => p.Name, new { @class = "Project__ModalInput", PlaceHolder = "Task name...", required = "required" })
+
+                            @Html.DropDownListFor(p => p.ProjectId, new SelectList(Model.Projects, "Id", "Name"), new { @class = "Project__BtnAdd btn-add.btn-add-input", @id = "projectList" })
+
+                            @Html.HiddenFor(c => c.ColorString, new { @id = "color-holder" })
+
+                        </div>
+                        <div class="Project__ModalFooter">
+                            <input type='text' id="togglePaletteOnly" />
+                            <button class="btn Project__CreateBtn" style="float: right" type="submit">Create Task</button>
+                            <!--  <button class="btn Project__CreateBtn" style="float: left" data-dismiss="modal">Close</button> -->
+
+                        </div>
+                    </text>
+                }
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    var id = 1;
+
+    var cusColors = [
+        "#000", "#444", "#33CC00", "#90f", "#f0f", "#f00", "#f90", "#ff0", "#0f0", "#0ff", "#c00", "#e69138",
+        "#3366FF", "#00f", "#741b47"
+    ];
+
+    var color = cusColors[Math.floor(Math.random() * cusColors.length)];
+
+    $("#togglePaletteOnly").spectrum({
+        showPaletteOnly: true,
+        togglePaletteOnly: true,
+        togglePaletteMoreText: 'Custom color',
+        togglePaletteLessText: 'Hide',
+        hideAfterPaletteSelect: true,
+        preferredFormat: 'hex3',
+        color: color,
+        change: function(color) {
+            $('#color-holder').val(color);
+        },
+        palette: [
+            ["#000", "#444", "#33CC00", "#90f", "#f0f"],
+            ["#f00","#f90","#ff0","#0f0","#0ff"],
+            ["#c00", "#e69138", "#3366FF", "#00f", "#741b47"]
+
+        ]
+
+    });
+
+    //Convert RGB color to HEX
+
+    function componentToHex(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+
+    function rgbToHex(r, g, b) {
+        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
+
+
+
+    $(document).one('ready', function () {
+      
+
+
+        $('#color-holder').val(color);
+
+    });
+
+    $(document).ready(function()
+    {
+        $('.modal').on('hidden.bs.modal', function(){
+            $(this).find('form')[0].reset();
+        });
+    });
+
+    function UpdateTaskTable() {
+
+
+        //Dismiss modal
+
+        $('#taskModal').modal('hide');
+
+        //Refresh table
+        $('#Tasks__List').load('@Url.Action("GetTaskPartialViewResult", "Task")');
+
+
+
+    }
+
+</script>
+

@@ -1,0 +1,75 @@
+﻿@using TImeDesk.ViewModel
+@model WorkspaceViewModel
+
+<div class="Workspace__Wrapper">
+    <div class="Workspace__Header">
+        <div class="Workspace__Title">My Workspaces</div>
+    </div>
+    <div class="Workspace__Body">
+        <div class="Workspace__WorkspacesWrapper" id="WorkSpaceHolder">
+            <div class="Workspace__WorkspacesFilter">
+                <div class="Workspace__WorkspacesTitle">
+                    Workspaces
+                </div>
+                <div class="Workspace__WorkspacesFilterContainer">
+                    <input type="text" placeholder="Find workspace.." id="WsFilterInput" class="Workspace__FilterInput" onkeyup="filterWorkspace()">
+                </div>
+            </div>
+            <div class="Workspace__Divider"></div>
+            
+            <div id="WorkspaceEntries">
+            @foreach(var w in Model.WorkSpaces)
+            {
+                @Html.Partial("Components/_WorkspaceEntry",new WorkspaceViewModel{currentWorkspaceId = Model.currentWorkspaceId, WorkSpace = w.WorkSpace});
+            }
+            </div>
+        </div>
+
+        <div style="margin-left: 40%; margin-top: 20px;"> <a href='@Url.Action("CreateWorkspaceView","Workspace")' class="btn btn-info">Create workspace</a> </div>
+
+        <div class="Workspace__InvitationsWrapper">
+            <div class="Header">
+                <div class="Title">
+                    Invitations
+                </div>
+            </div>
+            <div class="Workspace__Divider"></div>
+
+            @foreach (var invitation in Model.WorkspaceInvitations)
+            {
+                @Html.Partial("Components/_WorkspaceInvitation", invitation);
+            }
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/WorkSpace/Controller.js")"></script>
+
+<script type="text/javascript">
+
+    var switchWorkspaceUrl = "@Url.Action("SwitchWorkspace", "Workspace")";
+    var invHandlerUrl = "@Url.Action("InvitationHandler", "Workspace")";
+    var addNewWorkspaceUrl = "@Url.Action("GetWorkspacePartialViewResult", "Workspace")";
+      var GetWorkspaceIndexView = "@Url.Action("RenderRazorViewToString", "Workspace")";
+
+    /* Filter workspace by name */
+    function filterWorkspace() {
+        var i;
+        var filter = document.getElementById("WsFilterInput").value.toUpperCase();
+        var holder = document.getElementById("WorkSpaceHolder");
+        var a = holder.getElementsByClassName("Name");
+
+        for (i = 0; i < a.length; i++) {
+
+            if (a[i].id !== 0) {
+                if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    $(a[i]).closest('div[class^="Workspace__WorkspaceRow"]').css("display", "");
+                } else {
+                    $(a[i]).closest('div[class^="Workspace__WorkspaceRow"]').css("display", "none");
+                }
+            }
+
+        }
+    }
+</script>

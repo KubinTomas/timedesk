@@ -1,0 +1,55 @@
+﻿@using TImeDesk.Models.Database
+@model TImeDesk.ViewModel.TagViewModel
+
+
+<!-- Modal -->
+<div class="modal fade" id="tagModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title font-weight-bold">Create tag</h4>
+            </div>
+            <div class="Project__ModalBody">
+
+                @using (Ajax.BeginForm("AddTag", "Tag", new AjaxOptions { HttpMethod = "POST", OnSuccess = "UpdateTagTable" }))
+                {
+                    <text>
+                        <div class="Project__ModalContainer">
+                            @Html.TextBoxFor(p => p.Tag.Name, new { @class = "Project__ModalInput", PlaceHolder = "Tag name...", required = "required" })
+
+                        </div>
+                        <div class="Project__ModalFooter">
+                            <button class="btn Project__CreateBtn" style="float: right" type="submit">Create Tag</button>
+                            <button class="btn Project__CreateBtn" style="float: left" data-dismiss="modal">Close</button> 
+
+                        </div>
+                    </text>
+                }
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function UpdateTagTable() {
+
+
+        //Dismiss modal
+
+        $('#tagModal').modal('hide');
+
+        //Refresh table
+        $('#Tags__List').load('@Url.Action("GetTagPartialViewResult", "Tag")');
+
+
+
+    }
+</script>
